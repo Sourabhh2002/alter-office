@@ -4,37 +4,51 @@ import { Image } from "astro:assets";
 ---
 
 <Layout title="About">
-  <section class="bg-[#2933AF] h-[100dvh] px-[75px] pt-[26px]">
-    <!-- Alter office logo -->
-    <Image
-      src="/images/misc/alter_office_logo.png"
-      alt="Alter_Office_Logo"
-      width={212}
-      height={72}
-      loading="eager"
-    />
+  <section
+    class="bg-[#2933AF] h-[100dvh] px-[75px] pt-[26px] pb-[4vh] flex flex-col justify-between gap-10 overflow-hidden"
+  >
+    <div>
+      <!-- Alter office logo -->
+      <Image
+        src="/images/misc/alter_office_logo.png"
+        alt="Alter_Office_Logo"
+        width={212}
+        height={72}
+        loading="eager"
+      />
 
-    <!-- Outlined text -->
-    <p
-      class="font-HamonOutline absolute top-[-98px] right-[147px] text-white opacity-40 text-[251px] text-left leading-[290px] tracking-[0px]"
-    >
-      About
-    </p>
+      <!-- Outlined text -->
+      <p
+        class="font-HamonOutline absolute top-[-118px] right-[147px] text-white opacity-40 text-[251px] text-left leading-[290px] tracking-[0px]"
+      >
+        About
+      </p>
+    </div>
 
     <!-- Main content -->
-    <main>
+    <main class="flex flex-col gap-[7vh]">
       <!-- Main text heading -->
       <div
-        class="font-HamonBold text-[150px] leading-[126px] tracking-[-4.2px] text-white mt-[98px]"
+        class="font-HamonBold text-[150px] leading-[126px] tracking-[-4.2px] text-white"
       >
         <p>We are</p>
-        <p>The Alter Office</p>
+        <p>The Alter Office.</p>
       </div>
 
-      <!-- Section containers -->
       <div>
-        <!-- Know your culture -->
-        <div></div>
+        <!-- Section containers -->
+        <div class="w-full h-[40vh] grid grid-cols-[1.5fr_1fr_1fr] gap-[2.5vw]">
+          <!-- Know your culture -->
+          <div class="bg-[#FFE135]"></div>
+
+          <!-- Read our thoughts -->
+          <div class="bg-[#12FF00]"></div>
+
+          <!-- Be part of the team -->
+          <div class="bg-[#E51A22]"></div>
+        </div>
+
+        <div class="bg-[#12FF00] h-[3vh] w-[35%] mt-5"></div>
       </div>
     </main>
   </section>
