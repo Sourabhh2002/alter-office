@@ -1,0 +1,41 @@
+---
+import Layout from "@layouts/Layout.astro";
+import { Image } from "astro:assets";
+---
+
+<Layout title="About">
+  <section class="bg-[#2933AF] h-[100dvh] px-[75px] pt-[26px]">
+    <!-- Alter office logo -->
+    <Image
+      src="/images/misc/alter_office_logo.png"
+      alt="Alter_Office_Logo"
+      width={212}
+      height={72}
+      loading="eager"
+    />
+
+    <!-- Outlined text -->
+    <p
+      class="font-HamonOutline absolute top-[-98px] right-[147px] text-white opacity-40 text-[251px] text-left leading-[290px] tracking-[0px]"
+    >
+      About
+    </p>
+
+    <!-- Main content -->
+    <main>
+      <!-- Main text heading -->
+      <div
+        class="font-HamonBold text-[150px] leading-[126px] tracking-[-4.2px] text-white mt-[98px]"
+      >
+        <p>We are</p>
+        <p>The Alter Office</p>
+      </div>
+
+      <!-- Section containers -->
+      <div>
+        <!-- Know your culture -->
+        <div></div>
+      </div>
+    </main>
+  </section>
+</Layout>
