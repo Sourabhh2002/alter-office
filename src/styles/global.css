@@ -5,6 +5,8 @@
   --font-HamonRegular: "HamonRegular", sans-serif;
   --font-HamonLight: "HamonLight", sans-serif;
   --font-HamonOutline: "HamonOutline", sans-serif;
+
+  --breakpoint-lg: 1025px;
 }
 
 /* Font face */

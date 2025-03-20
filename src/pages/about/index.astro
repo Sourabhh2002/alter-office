@@ -5,9 +5,9 @@ import { Image } from "astro:assets";
 
 <Layout title="About">
   <section
-    class="bg-[#2933AF] h-[100dvh] px-[75px] pt-[26px] pb-[4vh] flex flex-col justify-between gap-10 overflow-hidden"
+    class="bg-[#2933AF] h-[100dvh] px-4 lg:px-[75px] pt-[26px] pb-[4vh] flex flex-col lg:justify-between gap-10 overflow-hidden"
   >
-    <div>
+    <div class="max-w-[3840px] w-full mx-auto">
       <!-- Alter office logo -->
       <Image
         src="/images/misc/alter_office_logo.png"
@@ -16,20 +16,13 @@ import { Image } from "astro:assets";
         height={72}
         loading="eager"
       />
-
-      <!-- Outlined text -->
-      <p
-        class="font-HamonOutline absolute top-[-118px] right-[147px] text-white opacity-40 text-[251px] text-left leading-[290px] tracking-[0px]"
-      >
-        About
-      </p>
     </div>
 
     <!-- Main content -->
-    <main class="flex flex-col gap-[7vh]">
+    <main class="max-w-[3840px] w-full mx-auto flex flex-col gap-[7vh]">
       <!-- Main text heading -->
       <div
-        class="font-HamonBold text-[150px] leading-[126px] tracking-[-4.2px] text-white"
+        class="font-HamonBold text-[clamp(50px,min(12vw,13vh),300px)] lg:text-[clamp(50px,13vh,300px)] leading-[clamp(45px,min(10vw,11vh),252px)] lg:leading-[clamp(45px,11vh,252px)] tracking-[-4.2px] text-white"
       >
         <p>We are</p>
         <p>The Alter Office.</p>
@@ -37,19 +30,35 @@ import { Image } from "astro:assets";
 
       <div>
         <!-- Section containers -->
-        <div class="w-full h-[40vh] grid grid-cols-[1.5fr_1fr_1fr] gap-[2.5vw]">
+        <div
+          class="w-full h-[40vh] grid lg:grid-cols-[1.5fr_1fr_1fr] gap-[2.5vw]"
+        >
           <!-- Know your culture -->
-          <div class="bg-[#FFE135]"></div>
+          <div class="box bg-[#FFE135]"></div>
 
           <!-- Read our thoughts -->
-          <div class="bg-[#12FF00]"></div>
+          <div class="box bg-[#12FF00]"></div>
 
           <!-- Be part of the team -->
-          <div class="bg-[#E51A22]"></div>
+          <div class="box bg-[#E51A22]"></div>
         </div>
 
-        <div class="bg-[#12FF00] h-[3vh] w-[35%] mt-5"></div>
+        <!-- <div class="bg-[#12FF00] h-[3vh] w-[35%] mt-5"></div> -->
       </div>
     </main>
   </section>
+
+  <style>
+    @media (max-height: 550px) {
+      section {
+        height: auto !important;
+        min-height: 550px;
+        overflow-y: auto !important;
+        justify-content: flex-start !important;
+      }
+      .box {
+        height: 220px;
+      }
+    }
+  </style>
 </Layout>
