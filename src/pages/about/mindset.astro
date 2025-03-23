@@ -1,0 +1,56 @@
+---
+import Layout from "@layouts/Layout.astro";
+import { Image } from "astro:assets";
+---
+
+<Layout title="Mindset">
+  <section class="bg-[#dff] h-[100dvh] overflow-hidden">
+    <div class="max-w-[3840px] w-full mx-auto px-4 lg:px-[75px] pt-[3vh]">
+      <!-- Alter office logo -->
+      <Image
+        src="/images/misc/tao_logo_blue.png"
+        alt="Alter_Office_Logo"
+        width={209}
+        height={72}
+        loading="eager"
+        class="w-auto h-[5vh]"
+      />
+    </div>
+
+    <!-- Main content -->
+    <main
+      class="max-w-[3840px] w-full mx-auto px-4 lg:px-[49px] flex-grow flex flex-col justify-center"
+    >
+      <p class="font-HamonLight text-[min(3.5vw,5vh,130px)] text-center">
+        Substance Over Theater
+      </p>
+      <div
+        class="font-HamonBold text-[min(12vw,13vh,300px)] leading-[0.85] text-center"
+      >
+        <p>"A design/code that never</p>
+        <p>ships is just a pretty</p>
+        <p>picture."</p>
+      </div>
+      <div
+        class="w-full max-w-[732px] font-HamonBold text-[3vh] leading-[1.2] opacity-90 ml-auto mr-auto lg:mr-24 mt-[3vh]"
+      >
+        Great ideas don't live in Figma or Notion—they live in real products. If
+        it doesn't make it to the user's hands, it doesn't matter how good it
+        looks. Execution > Perfection.
+      </div>
+    </main>
+
+    <div class="h-[4vh]"></div>
+  </section>
+
+  <style>
+    @media (max-height: 550px) {
+      section {
+        --scale-factor: calc(100vh / 550);
+        transform: scale(var(--scale-factor));
+        transform-origin: top center;
+        height: calc(550px * var(--scale-factor)) !important;
+      }
+    }
+  </style>
+</Layout>

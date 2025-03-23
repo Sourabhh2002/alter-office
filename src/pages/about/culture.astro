@@ -5,47 +5,27 @@ import { Image } from "astro:assets";
 
 <Layout title="Culture">
   <section
-    class="bg-[#FFE135] h-[100dvh] px-4 lg:px-[75px] pt-[26px] pb-[4vh] flex flex-col lg:justify-between gap-10 overflow-hidden"
+    class="bg-[#FFE135] h-[100dvh] px-4 lg:px-[75px] pt-[26px] pb-[4vh] overflow-hidden"
   >
     <div class="max-w-[3840px] w-full mx-auto">
       <!-- Alter office logo -->
-      <div class="w-fit bg-[#2933AF] px-[5px] pt-1 pb-[1px] rounded-2xl">
-        <Image
-          src="/images/misc/alter_office_logo.png"
-          alt="Alter_Office_Logo"
-          width={212}
-          height={72}
-          loading="eager"
-        />
-      </div>
+      <Image
+        src="/images/misc/tao_logo_blue.png"
+        alt="Alter_Office_Logo"
+        width={212}
+        height={72}
+        loading="eager"
+      />
     </div>
 
     <!-- Main content -->
-    <main class="max-w-[3840px] w-full mx-auto flex flex-col gap-[7vh]">
-      <!-- Main text heading -->
+    <main class="max-w-[3840px] w-full mx-auto mt-[55px]">
+      <p class="font-HamonLight text-[68px]">We believe</p>
       <div
-        class="font-HamonBold text-[clamp(50px,min(12vw,13vh),300px)] lg:text-[clamp(50px,13vh,300px)] leading-[clamp(45px,min(10vw,11vh),252px)] lg:leading-[clamp(45px,11vh,252px)] tracking-[-4.2px] text-white"
+        class="font-HamonBold text-[clamp(50px,min(7.8vw,13.9vh),300px)] leading-[clamp(45px,min(6.6vw,11.7vh),252px)] mt-2"
       >
-        <p>We are</p>
-        <p>The Alter Office.</p>
-      </div>
-
-      <div>
-        <!-- Section containers -->
-        <div
-          class="w-full h-[40vh] grid lg:grid-cols-[1.5fr_1fr_1fr] gap-[2.5vw]"
-        >
-          <!-- Know your culture -->
-          <div class="box bg-[#FFE135]"></div>
-
-          <!-- Read our thoughts -->
-          <div class="box bg-[#12FF00]"></div>
-
-          <!-- Be part of the team -->
-          <div class="box bg-[#E51A22]"></div>
-        </div>
-
-        <!-- <div class="bg-[#12FF00] h-[3vh] w-[35%] mt-5"></div> -->
+        <p>"When everyone grows,</p>
+        <p>we all succeed!"</p>
       </div>
     </main>
   </section>
@@ -56,10 +36,6 @@ import { Image } from "astro:assets";
         height: auto !important;
         min-height: 550px;
         overflow-y: auto !important;
-        justify-content: flex-start !important;
-      }
-      .box {
-        height: 220px;
       }
     }
   </style>
