@@ -1,0 +1,49 @@
+---
+import Layout from "@layouts/Layout.astro";
+import { Image } from "astro:assets";
+---
+
+<Layout title="Mindset">
+  <section class="bg-[#12FF00] h-[100dvh] pt-[26px] pb-[4vh] overflow-hidden">
+    <div class="max-w-[3840px] w-full mx-auto px-4 lg:px-[75px]">
+      <!-- Alter office logo -->
+      <Image
+        src="/images/misc/tao_logo_blue.png"
+        alt="Alter_Office_Logo"
+        width={212}
+        height={72}
+        loading="eager"
+      />
+    </div>
+
+    <!-- Main content -->
+    <main class="max-w-[3840px] w-full mx-auto mt-[85px] px-4 lg:px-[49px]">
+      <p class="font-HamonLight text-[68px] leading-[62px] text-center">
+        Collaboration Without Hand-Holding
+      </p>
+      <div class="font-HamonBold text-[150px] leading-[134px] text-center mt-2">
+        <p>"We don’t pass the ball,</p>
+        <p>we score the goal</p>
+        <p>together."</p>
+      </div>
+
+      <div
+        class="font-HamonBold text-[26px] leading-[30px] opacity-90 w-[732px] ml-auto mr-[135px] mt-8"
+      >
+        Everyone here is a decision-maker. We work together, but you won’t be
+        spoon-fed. If you need guidance, ask. But don’t wait to be told what to
+        do.
+      </div>
+    </main>
+  </section>
+
+  <style>
+    @media (max-height: 550px) {
+      section {
+        height: auto !important;
+        min-height: 550px;
+        overflow-y: auto !important;
+      }
+    }
+  </style>
+</Layout>
