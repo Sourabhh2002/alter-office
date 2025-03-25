@@ -1,0 +1,47 @@
+---
+import Layout from "@layouts/Layout.astro";
+import { Image } from "astro:assets";
+---
+
+<Layout title="Culture">
+  <section
+    class="bg-[#FFE135] h-[100dvh] relative px-4 lg:px-[75px] pt-[26px] overflow-hidden"
+  >
+    <div class="max-w-[3840px] w-full mx-auto">
+      <!-- Alter office logo -->
+      <Image
+        src="/images/misc/tao_logo_blue.png"
+        alt="Alter_Office_Logo"
+        width={212}
+        height={72}
+        loading="eager"
+      />
+    </div>
+
+    <!-- Main content -->
+    <main class="max-w-[3840px] w-full mx-auto mt-[55px]">
+      <p class="font-HamonLight text-[68px]">We make sure you are</p>
+      <div class="font-HamonBold text-[150px] leading-[130px] mt-2 text-nowrap">
+        <p>Surrounded by passionate</p>
+        <p>product builders.</p>
+      </div>
+      <div
+        class="w-[732px] text-[26px] leading-[30px] opacity-90 font-HamonBold mt-12"
+      >
+        You won’t just find colleagues here—you’ll find people genuinely excited
+        about building products. We’re passionate makers who care deeply about
+        what we create and who we create it with.
+      </div>
+    </main>
+  </section>
+
+  <style>
+    @media (max-height: 550px) {
+      section {
+        height: auto !important;
+        min-height: 550px;
+        overflow-y: auto !important;
+      }
+    }
+  </style>
+</Layout>

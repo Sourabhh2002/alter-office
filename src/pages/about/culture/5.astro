@@ -5,7 +5,7 @@ import { Image } from "astro:assets";
 
 <Layout title="Culture">
   <section
-    class="bg-[#FFE135] h-[100dvh] px-4 lg:px-[75px] pt-[26px] pb-[4vh] overflow-hidden"
+    class="bg-[#FFE135] h-[100dvh] relative px-4 lg:px-[75px] pt-[26px] overflow-hidden"
   >
     <div class="max-w-[3840px] w-full mx-auto">
       <!-- Alter office logo -->
@@ -20,12 +20,17 @@ import { Image } from "astro:assets";
 
     <!-- Main content -->
     <main class="max-w-[3840px] w-full mx-auto mt-[55px]">
-      <p class="font-HamonLight text-[68px]">We believe</p>
+      <p class="font-HamonLight text-[68px]">We always</p>
+      <div class="font-HamonBold text-[150px] leading-[130px] mt-2">
+        <p>Grind hard</p>
+        <p>Play harder.</p>
+      </div>
       <div
-        class="font-HamonBold text-[clamp(50px,min(7.8vw,13.9vh),300px)] leading-[clamp(45px,min(6.6vw,11.7vh),252px)] mt-2"
+        class="w-[732px] text-[26px] leading-[30px] opacity-90 font-HamonBold mt-12"
       >
-        <p>"When everyone grows,</p>
-        <p>we all succeed!"</p>
+        We value outcomes, not exhaustion. We work intelligently, manage our
+        time effectively, and remember to have fun along the way. Because the
+        best ideas come from balanced minds.
       </div>
     </main>
   </section>

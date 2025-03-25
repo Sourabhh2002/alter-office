@@ -1,48 +1,28 @@
 ---
-import Layout from "@layouts/Layout.astro";
-import { Image } from "astro:assets";
+import Mindset from "@layouts/about/Mindset.astro";
 ---
 
-<Layout title="Mindset">
-  <section class="bg-[#12FF00] h-[100dvh] pt-[26px] pb-[4vh] overflow-hidden">
-    <div class="max-w-[3840px] w-full mx-auto px-4 lg:px-[75px]">
-      <!-- Alter office logo -->
-      <Image
-        src="/images/misc/tao_logo_blue.png"
-        alt="Alter_Office_Logo"
-        width={212}
-        height={72}
-        loading="eager"
-      />
+<Mindset prevPage="/about/mindset/2" nextPage="/about/mindset/4">
+  <!-- Main content -->
+  <main class="w-full mt-40 md:mt-[73px] px-4 lg:px-[80px]">
+    <p
+      class="font-HamonLight text-[clamp(1.5rem,0.714rem+3.929vw,4.25rem)] leading-[clamp(1.063rem,0.259rem+4.018vw,3.875rem)] h-[clamp(1.813rem,0.866rem+4.732vw,5.125rem)] flex justify-end items-end"
+    >
+      Ownership & Accountability
+    </p>
+    <div
+      class="font-HamonBold text-[clamp(3rem,1.179rem+9.107vw,9.375rem)] leading-[clamp(2.625rem,0.982rem+8.214vw,8.375rem)] text-right mt-8"
+    >
+      <p>"If it’s broken, don’t ask</p>
+      <p>who—fix it."</p>
     </div>
 
-    <!-- Main content -->
-    <main class="max-w-[3840px] w-full mx-auto mt-[73px] px-4 lg:px-[80px]">
-      <p class="font-HamonLight text-[68px] leading-[62px] text-right">
-        Ownership & Accountability
-      </p>
-      <div class="font-HamonBold text-[150px] leading-[134px] text-right mt-5">
-        <p>"If it’s broken, don’t ask</p>
-        <p>who—fix it."</p>
-      </div>
-
-      <div
-        class="font-HamonBold text-[26px] leading-[30px] opacity-90 w-[732px] mt-8 relative left-[148px]"
-      >
-        We’re all builders here. No blame games, no bureaucracy. If something’s
-        off, take charge, propose a solution, and make it better. If you see a
-        problem, you own it.
-      </div>
-    </main>
-  </section>
-
-  <style>
-    @media (max-height: 550px) {
-      section {
-        height: auto !important;
-        min-height: 550px;
-        overflow-y: auto !important;
-      }
-    }
-  </style>
-</Layout>
+    <!-- <div
+      class="font-HamonBold text-[26px] leading-[30px] opacity-90 w-[732px] mt-8 mx-auto relative right-[350px]"
+    >
+      We’re all builders here. No blame games, no bureaucracy. If something’s
+      off, take charge, propose a solution, and make it better. If you see a
+      problem, you own it.
+    </div> -->
+  </main>
+</Mindset>
