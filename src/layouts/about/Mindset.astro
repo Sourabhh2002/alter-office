@@ -47,19 +47,23 @@ const { prevPage, nextPage } = Astro.props;
       <!-- Arrow btns -->
       <div class="flex items-end absolute right-0 bottom-0">
         <!-- Back arrow -->
-        <a
-          href={prevPage}
-          class="h-[95px] w-[100px] sm:size-[123px] bg-[#C80005] flex items-center justify-center cursor-pointer"
-        >
-          <Image
-            src="/images/misc/back_arrow.svg"
-            alt="Back_Arrow"
-            width={54}
-            height={54}
-            loading="lazy"
-            class="size-[40px] sm:size-[54px]"
-          />
-        </a>
+        {
+          prevPage && (
+            <a
+              href={prevPage}
+              class="h-[95px] w-[100px] sm:size-[123px] bg-[#C80005] flex items-center justify-center cursor-pointer"
+            >
+              <Image
+                src="/images/misc/back_arrow.svg"
+                alt="Back_Arrow"
+                width={54}
+                height={54}
+                loading="lazy"
+                class="size-[40px] sm:size-[54px]"
+              />
+            </a>
+          )
+        }
 
         <!-- Forward arrow -->
         {
@@ -101,25 +105,58 @@ const { prevPage, nextPage } = Astro.props;
   <!-- Script -->
 
   <script>
-    // Calculate zoom based on viewport height
-    function setFluidZoom() {
+    function calculateBaseZoom() {
       const minZoom = 0.35;
       const maxZoom = 1.9;
       const minHeight = 350;
       const maxHeight = 2160;
-
       const viewportHeight = window.innerHeight;
-      let zoom =
-        minZoom +
-        (maxZoom - minZoom) *
-          ((viewportHeight - minHeight) / (maxHeight - minHeight));
 
-      zoom = Math.max(minZoom, Math.min(maxZoom, zoom)); // Ensure zoom stays within range
+      return Math.max(
+        minZoom,
+        Math.min(
+          maxZoom,
+          minZoom +
+            (maxZoom - minZoom) *
+              ((viewportHeight - minHeight) / (maxHeight - minHeight))
+        )
+      );
+    }
+
+    // Initialize with proper zoom based on current viewport
+    let lastComputedZoom = calculateBaseZoom();
+
+    function setFluidZoom() {
+      const widthBreakpoint = 1440;
+      const viewportWidth = window.innerWidth;
+
+      // Always calculate height-based zoom
+      let heightZoom = calculateBaseZoom();
+      let finalZoom = heightZoom;
+
+      if (viewportWidth >= widthBreakpoint) {
+        // Above breakpoint: apply width constraints
+        const widthZoom = viewportWidth / 1920;
+        finalZoom = Math.min(heightZoom, widthZoom);
+        lastComputedZoom = finalZoom;
+      } else {
+        // Below breakpoint: use the most constrained zoom
+        finalZoom = Math.min(lastComputedZoom, heightZoom);
+
+        // Special case: if we're loading below 1440px initially,
+        // use height-based zoom but prevent it from being larger
+        // than what it would be at 1440px width
+        if (lastComputedZoom === heightZoom) {
+          const hypotheticalWidthZoom = 1440 / 1920;
+          finalZoom = Math.min(heightZoom, hypotheticalWidthZoom);
+          lastComputedZoom = finalZoom;
+        }
+      }
 
       const innerContainer = document.querySelector(".inner-container");
       if (innerContainer instanceof HTMLElement) {
-        innerContainer.style.zoom = String(zoom);
-        innerContainer.style.visibility = "visible"; // Show content after zoom is set
+        innerContainer.style.zoom = String(finalZoom);
+        innerContainer.style.visibility = "visible";
       }
     }
 

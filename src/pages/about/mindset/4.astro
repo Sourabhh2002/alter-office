@@ -1,22 +1,21 @@
 ---
+import Headline from "@components/about/Headline.astro";
+import PreHeadline from "@components/about/PreHeadline.astro";
 import Mindset from "@layouts/about/Mindset.astro";
 ---
 
 <Mindset prevPage="/about/mindset/3" nextPage="/about/mindset/5">
   <!-- Main content -->
   <main class="w-full mt-40 md:mt-[89px] px-4 lg:px-[75px]">
-    <p
-      class="font-HamonLight text-[clamp(1.5rem,0.714rem+3.929vw,4.25rem)] leading-[clamp(1.063rem,0.259rem+4.018vw,3.875rem)] h-[clamp(1.813rem,0.866rem+4.732vw,5.125rem)] flex items-end justify-center"
-    >
+    <PreHeadline class="flex items-end justify-center">
       Collaboration Without Hand-Holding
-    </p>
-    <div
-      class="font-HamonBold text-[clamp(3rem,1.179rem+9.107vw,9.375rem)] leading-[clamp(2.625rem,0.982rem+8.214vw,8.375rem)] text-center mt-[25px] sm:mt-4"
-    >
+    </PreHeadline>
+
+    <Headline class="text-center mt-[25px] sm:mt-4">
       <p>"We don’t pass the ball,</p>
       <p>we score the goal</p>
       <p>together."</p>
-    </div>
+    </Headline>
 
     <!-- <div
       class="font-HamonBold text-[26px] leading-[30px] opacity-90 w-[732px] mt-14 mx-auto relative left-[295px]"

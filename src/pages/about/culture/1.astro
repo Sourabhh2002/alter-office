@@ -1,58 +1,40 @@
 ---
-import Layout from "@layouts/Layout.astro";
-import { Image } from "astro:assets";
+import PreHeadline from "@components/about/PreHeadline.astro";
+import Headline from "@components/about/Headline.astro";
+import Culture from "@layouts/about/Culture.astro";
+import Image from "astro/components/Image.astro";
+import Tagline from "@components/about/Tagline.astro";
 ---
 
-<Layout title="Culture">
-  <section
-    class="bg-[#FFE135] h-[100dvh] px-4 lg:px-[75px] pt-[26px] overflow-hidden"
-  >
-    <div class="max-w-[3840px] w-full mx-auto">
-      <!-- Alter office logo -->
-      <Image
-        src="/images/misc/tao_logo_blue.png"
-        alt="Alter_Office_Logo"
-        width={212}
-        height={72}
-        loading="eager"
-      />
-    </div>
+<Culture prevPage="/about" nextPage="/about/culture/2">
+  <!-- Main content -->
+  <main class="w-full mt-[55px] px-4 lg:px-[75px]">
+    <PreHeadline class="flex items-end">We believe</PreHeadline>
 
-    <!-- Main content -->
-    <main class="max-w-[3840px] w-full mx-auto mt-[55px]">
-      <p class="font-HamonLight text-[68px]">We believe</p>
-      <div class="font-HamonBold text-[150px] leading-[124px] mt-2">
-        <p>"When everyone grows,</p>
-        <p>we all succeed!"</p>
-      </div>
-      <div
-        class="w-[732px] text-[26px] leading-[30px] opacity-90 ml-auto font-HamonBold mr-[5px] mt-8"
-      >
-        We’re invested in your journey—personally and professionally. Your wins
-        become ours, because real success is when everyone around you gets
-        better for a common goal of empowering users & being successful
-        together.
-      </div>
+    <Headline
+      defaultStyles={false}
+      class="leading-[clamp(2.625rem,1.161rem+7.321vw,7.75rem)] mt-8"
+    >
+      <p>"When everyone grows,</p>
+      <p>we all succeed!"</p>
+    </Headline>
 
-      <!-- Page img -->
-      <Image
-        src="/images/about/culture_1.png"
-        alt="culture_1"
-        width={866}
-        height={505}
-        loading="eager"
-        class="absolute bottom-0"
-      />
-    </main>
-  </section>
+    <Tagline
+      class="sm:ml-auto relative md:right-[55px] top-[30px] sm:top-[40px]"
+    >
+      We’re invested in your journey—personally and professionally. Your wins
+      become ours, because real success is when everyone around you gets better
+      for a common goal of empowering users & being successful together.
+    </Tagline>
 
-  <style>
-    @media (max-height: 550px) {
-      section {
-        height: auto !important;
-        min-height: 550px;
-        overflow-y: auto !important;
-      }
-    }
-  </style>
-</Layout>
+    <!-- Page img -->
+    <Image
+      src="/images/about/culture_1.png"
+      alt="culture_1"
+      width={866}
+      height={505}
+      loading="eager"
+      class="sm:absolute sm:bottom-0 mt-24"
+    />
+  </main>
+</Culture>

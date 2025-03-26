@@ -1,22 +1,19 @@
 ---
+import Headline from "@components/about/Headline.astro";
+import PreHeadline from "@components/about/PreHeadline.astro";
 import Mindset from "@layouts/about/Mindset.astro";
 ---
 
 <Mindset prevPage="/about/mindset/4" nextPage="/about/mindset/6">
   <!-- Main content -->
   <main class="w-full mt-40 md:mt-[98px] px-4 lg:px-[75px]">
-    <p
-      class="font-HamonLight text-[clamp(1.5rem,0.714rem+3.929vw,4.25rem)] leading-[clamp(1.063rem,0.259rem+4.018vw,3.875rem)] h-[clamp(1.813rem,0.866rem+4.732vw,5.125rem)] flex items-end"
-    >
-      Empathy Over Aesthetics
-    </p>
-    <div
-      class="font-HamonBold text-[clamp(3rem,1.179rem+9.107vw,9.375rem)] leading-[clamp(2.625rem,0.982rem+8.214vw,8.375rem)] mt-8"
-    >
+    <PreHeadline class="flex items-end"> Empathy Over Aesthetics </PreHeadline>
+
+    <Headline class="mt-8">
       <p>"Good UX is like oxygen—</p>
       <p>if you notice it,</p>
       <p>something’s wrong."</p>
-    </div>
+    </Headline>
 
     <!-- <div
       class="font-HamonBold text-[26px] leading-[30px] opacity-90 w-[732px] mt-12 mx-auto relative left-[260px]"

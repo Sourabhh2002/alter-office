@@ -1,0 +1,166 @@
+---
+import Layout from "@layouts/Layout.astro";
+import { Image } from "astro:assets";
+
+interface Props {
+  prevPage?: string;
+  nextPage?: string;
+}
+
+const { prevPage, nextPage } = Astro.props;
+---
+
+<Layout title="Culture">
+  <section
+    class="bg-[#FFE135] h-[100dvh] pt-[10px] sm:pt-[16px] md:pt-[21px] 2xl:pt-[33px] overflow-hidden relative"
+  >
+    <div class="inner-container">
+      <div class="w-full px-[11px] sm:px-[27px] md:px-[43px] lg:px-[75px]">
+        <!-- Alter office logo -->
+        <Image
+          src="/images/misc/tao_logo_blue.png"
+          alt="Alter_Office_Logo"
+          width={212}
+          height={72}
+          loading="eager"
+          class="w-[164px] h-[56px] sm:w-[188px] sm:h-[64px] md:w-[212px] md:h-[72px]"
+        />
+      </div>
+
+      <!-- Close btn -->
+      <div
+        class="size-[70px] sm:size-[98px] absolute top-0 right-0 bg-[#000000] flex items-center justify-center"
+      >
+        <Image
+          src="/images/misc/close.svg"
+          alt="Close"
+          width={42}
+          height={42}
+          loading="eager"
+          class="size-[28px] sm:size-[42px]"
+        />
+      </div>
+
+      <!-- Main content -->
+      <slot />
+
+      <!-- Arrow btns -->
+      <div class="flex items-end absolute right-0 bottom-0">
+        <!-- Back arrow -->
+        {
+          prevPage && (
+            <a
+              href={prevPage}
+              class="h-[95px] w-[100px] sm:size-[123px] bg-[#C80005] flex items-center justify-center cursor-pointer"
+            >
+              <Image
+                src="/images/misc/back_arrow.svg"
+                alt="Back_Arrow"
+                width={54}
+                height={54}
+                loading="lazy"
+                class="size-[40px] sm:size-[54px]"
+              />
+            </a>
+          )
+        }
+
+        <!-- Forward arrow -->
+        {
+          nextPage && (
+            <a
+              href={nextPage}
+              class="w-[130px] h-[135px] sm:w-[160px] sm:h-[165px] bg-[#2933AF] flex items-center justify-center cursor-pointer"
+            >
+              <Image
+                src="/images/misc/forward_arrow.svg"
+                alt="Forward_Arrow"
+                width={68}
+                height={68}
+                loading="lazy"
+                class="size-[54px] sm:size-[68px]"
+              />
+            </a>
+          )
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Styles -->
+  <style>
+    .inner-container {
+      visibility: hidden;
+    }
+
+    @media (max-height: 350px) {
+      section {
+        height: auto !important;
+        min-height: 350px;
+        overflow-y: auto !important;
+      }
+    }
+  </style>
+
+  <!-- Script -->
+
+  <script>
+    function calculateBaseZoom() {
+      const minZoom = 0.35;
+      const maxZoom = 1.9;
+      const minHeight = 350;
+      const maxHeight = 2160;
+      const viewportHeight = window.innerHeight;
+
+      return Math.max(
+        minZoom,
+        Math.min(
+          maxZoom,
+          minZoom +
+            (maxZoom - minZoom) *
+              ((viewportHeight - minHeight) / (maxHeight - minHeight))
+        )
+      );
+    }
+
+    // Initialize with proper zoom based on current viewport
+    let lastComputedZoom = calculateBaseZoom();
+
+    function setFluidZoom() {
+      const widthBreakpoint = 1440;
+      const viewportWidth = window.innerWidth;
+
+      // Always calculate height-based zoom
+      let heightZoom = calculateBaseZoom();
+      let finalZoom = heightZoom;
+
+      if (viewportWidth >= widthBreakpoint) {
+        // Above breakpoint: apply width constraints
+        const widthZoom = viewportWidth / 1920;
+        finalZoom = Math.min(heightZoom, widthZoom);
+        lastComputedZoom = finalZoom;
+      } else {
+        // Below breakpoint: use the most constrained zoom
+        finalZoom = Math.min(lastComputedZoom, heightZoom);
+
+        // Special case: if we're loading below 1440px initially,
+        // use height-based zoom but prevent it from being larger
+        // than what it would be at 1440px width
+        if (lastComputedZoom === heightZoom) {
+          const hypotheticalWidthZoom = 1440 / 1920;
+          finalZoom = Math.min(heightZoom, hypotheticalWidthZoom);
+          lastComputedZoom = finalZoom;
+        }
+      }
+
+      const innerContainer = document.querySelector(".inner-container");
+      if (innerContainer instanceof HTMLElement) {
+        innerContainer.style.zoom = String(finalZoom);
+        innerContainer.style.visibility = "visible";
+      }
+    }
+
+    window.addEventListener("load", setFluidZoom);
+    window.addEventListener("resize", setFluidZoom);
+  </script>
+</Layout>
