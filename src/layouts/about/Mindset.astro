@@ -42,7 +42,9 @@ const { prevPage, nextPage } = Astro.props;
       </div>
 
       <!-- Main content -->
-      <slot />
+      <div class="main-content">
+        <slot />
+      </div>
 
       <!-- Arrow btns -->
       <div class="flex items-end absolute right-0 bottom-0">
@@ -91,6 +93,16 @@ const { prevPage, nextPage } = Astro.props;
   <style>
     .inner-container {
       visibility: hidden;
+    }
+
+    @media (max-width: 1024px) and (min-width: 640px) {
+      .main-content {
+        position: absolute;
+        top: 50%;
+        left: 0;
+        right: 0;
+        transform: translateY(-70%);
+      }
     }
 
     @media (max-height: 350px) {

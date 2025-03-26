@@ -1,74 +1,49 @@
 ---
-import Layout from "@layouts/Layout.astro";
+import Culture from "@layouts/about/Culture.astro";
 import { Image } from "astro:assets";
 ---
 
-<Layout title="Culture">
-  <section
-    class="bg-[#FFE135] h-[100dvh] relative px-4 lg:px-[75px] pt-[26px] overflow-hidden"
-  >
-    <div class="max-w-[3840px] w-full mx-auto">
-      <!-- Alter office logo -->
-      <Image
-        src="/images/misc/tao_logo_blue.png"
-        alt="Alter_Office_Logo"
-        width={212}
-        height={72}
-        loading="eager"
-      />
+<Culture prevPage="/about/culture/2" nextPage="/about/culture/4">
+  <!-- Main content -->
+  <main class="w-full mt-[55px] px-4 lg:px-[75px]">
+    <p class="font-HamonLight text-[68px]">We always</p>
+    <div class="font-HamonBold text-[150px] leading-[124px] mt-2">
+      <p>Come together &</p>
+      <p>Communicate together.</p>
+    </div>
+    <div
+      class="w-[1039px] text-[26px] leading-[30px] opacity-90 ml-auto font-HamonBold mr-[92px] mt-12"
+    >
+      Ideas are better shared than kept silent. Here, your voice matters, your
+      opinion counts, and open conversations make us stronger as a team.
     </div>
 
-    <!-- Main content -->
-    <main class="max-w-[3840px] w-full mx-auto mt-[55px]">
-      <p class="font-HamonLight text-[68px]">We always</p>
-      <div class="font-HamonBold text-[150px] leading-[124px] mt-2">
-        <p>Come together &</p>
-        <p>Communicate together.</p>
-      </div>
-      <div
-        class="w-[1039px] text-[26px] leading-[30px] opacity-90 ml-auto font-HamonBold mr-[92px] mt-12"
-      >
-        Ideas are better shared than kept silent. Here, your voice matters, your
-        opinion counts, and open conversations make us stronger as a team.
-      </div>
-
-      <!-- Page img -->
-      <div class="absolute bottom-0 flex items-end -left-16">
-        <Image
-          src="/images/about/culture_3_1.png"
-          alt="Alter_Office_Logo"
-          width={647}
-          height={486}
-          loading="eager"
-          class="mb-4"
-        />
-        <Image
-          src="/images/about/culture_3_2.png"
-          alt="Alter_Office_Logo"
-          width={478}
-          height={598}
-          loading="eager"
-          class="-ml-14 relative top-42 z-20"
-        />
-        <Image
-          src="/images/about/culture_3_3.png"
-          alt="Alter_Office_Logo"
-          width={532}
-          height={424}
-          loading="eager"
-          class="-ml-10 relative top-10"
-        />
-      </div>
-    </main>
-  </section>
-
-  <style>
-    @media (max-height: 550px) {
-      section {
-        height: auto !important;
-        min-height: 550px;
-        overflow-y: auto !important;
-      }
-    }
-  </style>
-</Layout>
+    <!-- Page img -->
+    <div class="absolute bottom-0 flex items-end -left-16">
+      <Image
+        src="/images/about/culture_3_1.png"
+        alt="Alter_Office_Logo"
+        width={647}
+        height={486}
+        loading="eager"
+        class="mb-4"
+      />
+      <Image
+        src="/images/about/culture_3_2.png"
+        alt="Alter_Office_Logo"
+        width={478}
+        height={598}
+        loading="eager"
+        class="-ml-14 relative top-42 z-20"
+      />
+      <Image
+        src="/images/about/culture_3_3.png"
+        alt="Alter_Office_Logo"
+        width={532}
+        height={424}
+        loading="eager"
+        class="-ml-10 relative top-10"
+      />
+    </div>
+  </main>
+</Culture>

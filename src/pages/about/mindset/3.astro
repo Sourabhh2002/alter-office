@@ -1,6 +1,7 @@
 ---
 import Headline from "@components/about/Headline.astro";
 import PreHeadline from "@components/about/PreHeadline.astro";
+import Tagline from "@components/about/Tagline.astro";
 import Mindset from "@layouts/about/Mindset.astro";
 ---
 
@@ -16,12 +17,12 @@ import Mindset from "@layouts/about/Mindset.astro";
       <p>who—fix it."</p>
     </Headline>
 
-    <!-- <div
-      class="font-HamonBold text-[26px] leading-[30px] opacity-90 w-[732px] mt-8 mx-auto relative right-[350px]"
+    <Tagline
+      class="mt-8 text-right md:text-left ml-auto md:ml-0 md:relative md:left-[200px]"
     >
       We’re all builders here. No blame games, no bureaucracy. If something’s
       off, take charge, propose a solution, and make it better. If you see a
       problem, you own it.
-    </div> -->
+    </Tagline>
   </main>
 </Mindset>

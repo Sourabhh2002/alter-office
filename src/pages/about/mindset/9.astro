@@ -1,17 +1,18 @@
 ---
 import Headline from "@components/about/Headline.astro";
 import PreHeadline from "@components/about/PreHeadline.astro";
+import Tagline from "@components/about/Tagline.astro";
 import Mindset from "@layouts/about/Mindset.astro";
 ---
 
 <Mindset prevPage="/about/mindset/8" nextPage="/about/mindset/10">
   <!-- Main content -->
-  <main class="w-full mt-40 md:mt-[97px] px-4 lg:px-[75px]">
+  <main class="w-full mt-40 md:mt-[97px] px-6 lg:px-[75px]">
     <PreHeadline class="flex items-end justify-center">
       Showing Up Matters
     </PreHeadline>
 
-    <Headline class="text-center mt-[25px] sm:mt-4">
+    <Headline class="text-center mt-8 sm:mt-4">
       <p>Talent means nothing if</p>
       <p>you’re not in the game.</p>
     </Headline>
@@ -23,5 +24,12 @@ import Mindset from "@layouts/about/Mindset.astro";
       matters. Reliability > Raw talent. Your team should never have to wonder
       if you’ll deliver.
     </div> -->
+    <Tagline
+      class="px-6 sm:px-0 mt-8 md:mt-14 text-center mx-auto relative lg:right-[300px] xl:right-[450px]"
+    >
+      The best skills in the world won’t help if you don’t show up when it
+      matters. Reliability > Raw talent. Your team should never have to wonder
+      if you’ll deliver.
+    </Tagline>
   </main>
 </Mindset>

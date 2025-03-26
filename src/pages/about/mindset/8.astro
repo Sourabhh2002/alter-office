@@ -1,28 +1,31 @@
 ---
 import Headline from "@components/about/Headline.astro";
 import PreHeadline from "@components/about/PreHeadline.astro";
+import Tagline from "@components/about/Tagline.astro";
 import Mindset from "@layouts/about/Mindset.astro";
 ---
 
 <Mindset prevPage="/about/mindset/7" nextPage="/about/mindset/9">
   <!-- Main content -->
-  <main class="w-full mt-40 md:mt-[118px] px-4 lg:px-[75px]">
+  <main
+    class="w-full mt-40 md:mt-[118px] px-6 sm:px-[27px] md:px-[43px] lg:px-[75px]"
+  >
     <PreHeadline class="flex items-end justify-end">
       Teamwork Over Ego
     </PreHeadline>
 
-    <Headline class="mt-[25px] sm:mt-[12.5px] md:mt-[0px]">
-      <p>We don’t hire lone wolves.</p>
+    <Headline class="mt-8 sm:mt-4 md:mt-[10px] lg:mt-0">
+      <p class="xl:text-nowrap">We don’t hire lone wolves.</p>
       <p>We build packs that</p>
       <p>hunt together.</p>
     </Headline>
 
-    <!-- <div
-      class="font-HamonBold text-[26px] leading-[30px] opacity-90 w-[732px] mt-4 mx-auto relative left-[445px]"
+    <Tagline
+      class="mt-8 2xl:mt-4 sm:ml-auto sm:relative sm:right-[70px] md:right-[100px]"
     >
       No one wins alone. We thrive on collaboration, trust, and shared wins. If
       you’re here to outshine your team instead of growing with them, this isn’t
       your place.
-    </div> -->
+    </Tagline>
   </main>
 </Mindset>

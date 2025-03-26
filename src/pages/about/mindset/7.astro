@@ -1,12 +1,13 @@
 ---
 import Headline from "@components/about/Headline.astro";
 import PreHeadline from "@components/about/PreHeadline.astro";
+import Tagline from "@components/about/Tagline.astro";
 import Mindset from "@layouts/about/Mindset.astro";
 ---
 
 <Mindset prevPage="/about/mindset/6" nextPage="/about/mindset/8">
   <!-- Main content -->
-  <main class="w-full mt-40 md:mt-[77px] px-4 lg:pl-[75px] lg:pr-[49px]">
+  <main class="w-full mt-40 md:mt-[77px] px-6 lg:pl-[75px] lg:pr-[49px]">
     <PreHeadline class="flex items-end">
       Results Matter More Than Hours
     </PreHeadline>
@@ -17,12 +18,12 @@ import Mindset from "@layouts/about/Mindset.astro";
       <p>does it work?"</p>
     </Headline>
 
-    <!-- <div
-      class="font-HamonBold text-[26px] leading-[30px] opacity-90 w-[732px] mt-4 ml-auto mr-[80px]"
+    <Tagline
+      class="mt-8 md:mt-6 text-right sm:text-left ml-auto sm:relative sm:right-[80px] pl-10"
     >
       Effort doesn’t impress us—impact does. You could work 14 hours or 4, but
       if the output isn’t valuable, it doesn’t count. We track results, not
       timesheets.
-    </div> -->
+    </Tagline>
   </main>
 </Mindset>

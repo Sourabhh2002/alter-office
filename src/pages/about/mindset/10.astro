@@ -1,17 +1,18 @@
 ---
 import Headline from "@components/about/Headline.astro";
 import PreHeadline from "@components/about/PreHeadline.astro";
+import Tagline from "@components/about/Tagline.astro";
 import Mindset from "@layouts/about/Mindset.astro";
 ---
 
 <Mindset prevPage="/about/mindset/9">
   <!-- Main content -->
-  <main class="w-full mt-[97px] px-4 lg:px-[75px]">
+  <main class="w-full mt-40 md:mt-[97px] px-4 lg:px-[75px]">
     <PreHeadline class="flex items-end justify-center">
       The Alter Office Way
     </PreHeadline>
 
-    <Headline class="text-center mt-2">
+    <Headline class="text-center mt-8 sm:mt-4 md:mt-2">
       <p>We don’t do process for</p>
       <p>the sake of process.</p>
       <p>We build, we ship,</p>
@@ -24,5 +25,10 @@ import Mindset from "@layouts/about/Mindset.astro";
       We’re not here for meetings, approvals, or endless back-and-forths. We
       work fast, we work smart, and we get things done.
     </div> -->
+
+    <Tagline class="mt-8 md:mt-6 mx-auto text-center px-16 sm:px-0">
+      We’re not here for meetings, approvals, or endless back-and-forths. We
+      work fast, we work smart, and we get things done.
+    </Tagline>
   </main>
 </Mindset>

@@ -1,26 +1,27 @@
 ---
 import Headline from "@components/about/Headline.astro";
 import PreHeadline from "@components/about/PreHeadline.astro";
+import Tagline from "@components/about/Tagline.astro";
 import Mindset from "@layouts/about/Mindset.astro";
 ---
 
 <Mindset prevPage="/about/mindset/4" nextPage="/about/mindset/6">
   <!-- Main content -->
-  <main class="w-full mt-40 md:mt-[98px] px-4 lg:px-[75px]">
+  <main
+    class="w-full mt-40 md:mt-[98px] px-6 sm:px-[27px] md:px-[50px] lg:px-[75px]"
+  >
     <PreHeadline class="flex items-end"> Empathy Over Aesthetics </PreHeadline>
 
     <Headline class="mt-8">
-      <p>"Good UX is like oxygen—</p>
+      <p class="xl:text-nowrap">"Good UX is like oxygen—</p>
       <p>if you notice it,</p>
       <p>something’s wrong."</p>
     </Headline>
 
-    <!-- <div
-      class="font-HamonBold text-[26px] leading-[30px] opacity-90 w-[732px] mt-12 mx-auto relative left-[260px]"
-    >
+    <Tagline class="mt-8 md:mt-12 lg:ml-auto lg:relative lg:right-[270px]">
       Users don’t care about your fancy UI—they care about how it makes them
       feel and what it lets them do. If the experience feels natural and
       effortless, you’ve done your job.
-    </div> -->
+    </Tagline>
   </main>
 </Mindset>

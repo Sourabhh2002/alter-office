@@ -5,7 +5,7 @@ import Tagline from "@components/about/Tagline.astro";
 import Mindset from "@layouts/about/Mindset.astro";
 ---
 
-<Mindset prevPage="/about" nextPage="/about/mindset/2">
+<Mindset nextPage="/about/mindset/2">
   <!-- Main content -->
   <main class="w-full mt-40 md:mt-[85px] px-6 lg:px-[49px]">
     <PreHeadline class="flex items-end justify-center">
@@ -14,7 +14,7 @@ import Mindset from "@layouts/about/Mindset.astro";
 
     <Headline
       defaultStyles={false}
-      class="text-center leading-[clamp(2.625rem,0.732rem+9.464vw,9.25rem)] mt-[25px] sm:mt-[12.5px] md:mt-[0px]"
+      class="text-center leading-[clamp(3.625rem,0.732rem+9.464vw,9.25rem)] mt-8 sm:mt-4 md:mt-[10px] lg:mt-0"
     >
       <p>"A design/code that never</p>
       <p>ships is just a pretty</p>
@@ -22,7 +22,7 @@ import Mindset from "@layouts/about/Mindset.astro";
     </Headline>
 
     <Tagline
-      class="mt-10 md:mt-8 sm:ml-auto md:relative md:right-[150px] text-center sm:text-left px-12"
+      class="mt-8 sm:ml-auto md:relative md:right-[0px] lg:right-[150px] text-center sm:text-left px-4 sm-px-0"
     >
       Great ideas don't live in Figma or Notion—they live in real products. If
       it doesn't make it to the user's hands, it doesn't matter how good it

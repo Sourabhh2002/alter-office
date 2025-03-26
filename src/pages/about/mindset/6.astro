@@ -1,12 +1,13 @@
 ---
 import Headline from "@components/about/Headline.astro";
 import PreHeadline from "@components/about/PreHeadline.astro";
+import Tagline from "@components/about/Tagline.astro";
 import Mindset from "@layouts/about/Mindset.astro";
 ---
 
 <Mindset prevPage="/about/mindset/5" nextPage="/about/mindset/7">
   <!-- Main content -->
-  <main class="w-full mt-40 md:mt-[109px] px-4 lg:px-[45px]">
+  <main class="w-full mt-40 md:mt-[109px] px-6 lg:px-[45px]">
     <PreHeadline class="flex items-end justify-center">
       AI & Automation as Leverage
     </PreHeadline>
@@ -17,12 +18,12 @@ import Mindset from "@layouts/about/Mindset.astro";
       <p>work."</p>
     </Headline>
 
-    <!-- <div
-      class="font-HamonBold text-[26px] leading-[30px] opacity-90 w-[732px] mt-10 mx-auto relative right-[295px]"
+    <Tagline
+      class="px-3 sm:px-0 mt-8 md:mt-12 mx-auto text-center sm:text-left lg:mx-0 lg:relative lg:left-[290px]"
     >
       We don’t waste time on things AI can do better. AI helps us research,
       analyze, and automate, so we can focus on creativity, problem-solving, and
       building world-class experiences.
-    </div> -->
+    </Tagline>
   </main>
 </Mindset>
