@@ -1,0 +1,24 @@
+---
+import PreHeadline from "@components/about/PreHeadline.astro";
+import Tagline from "@components/about/Tagline.astro";
+import Vacancies from "@layouts/about/Vacancies.astro";
+---
+
+<Vacancies prevPage="/about/vacancies/3" nextPage="/about/vacancies/5">
+  <!-- Main content -->
+  <main class="w-full mt-[40px] px-4 lg:px-[75px]">
+    <PreHeadline class="text-center text-[#ffffff]"
+      >Now that's a lot of skills Thammaiah</PreHeadline
+    >
+    <div
+      class="font-HamonBold text-[clamp(3.5rem,2.786rem+3.571vw,6rem)] leading-[clamp(3rem,2.446rem+2.768vw,4.938rem)] text-white text-center"
+    >
+      <p>Rearrange these skills that you</p>
+      <p>love to primarily work in and so on.</p>
+    </div>
+
+    <Tagline class="mt-8 text-center mx-auto"
+      >Rearrange based on expertise below</Tagline
+    >
+  </main>
+</Vacancies>

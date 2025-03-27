@@ -1,36 +1,61 @@
 ---
-import Headline from "@components/about/Headline.astro";
-import Tagline from "@components/about/Tagline.astro";
 import Vacancies from "@layouts/about/Vacancies.astro";
-import QuizPopup from "@components/about/QuizPopup.astro";
 ---
 
-<Vacancies>
+<Vacancies
+  prevPage="/about/vacancies/getting-started"
+  nextPage="/about/vacancies/2"
+>
   <!-- Main content -->
-  <main class="w-full mt-[55px] px-4 lg:px-[75px]">
-    <Headline
-      defaultStyles={false}
-      class="leading-[clamp(3.325rem,1.161rem+7.321vw,7.75rem)] mt-[70px] text-white text-center"
+  <main class="w-full mt-[95px] px-4 lg:px-[75px]">
+    <div
+      class="font-HamonBold text-[clamp(3.5rem,2.786rem+3.571vw,6rem)] leading-[clamp(3rem,2.446rem+2.768vw,4.938rem)] text-white text-center"
     >
-      <p>Are you worthy enough</p>
-      <p>to be part of our</p>
-      <p>passionate & whacky</p>
-      <p>team?</p>
-    </Headline>
+      Before starting, introduce yourself
+    </div>
 
-    <Tagline class="mx-auto text-center mt-8">
-      Let's take a small quiz to understand which role you can play in The Alter
-      Office for success!
-    </Tagline>
-
-    <button
-      id="takeQuizBtn"
-      class="px-[60px] py-[30px] bg-[#000000] text-[#ffffff] font-HamonBold text-[26px] leading-[26px] sm:text-[30px] sm:leading-[30px] cursor-pointer relative left-[50%] translate-x-[-50%] mt-8"
+    <div
+      class="w-full sm:w-[644px] flex flex-col mx-auto gap-[16px] mt-[50px] sm:mt-[72px] px-2 sm:px-0"
     >
-      <p class="relative top-[2px]">Let's Take Quiz!</p>
-    </button>
+      <!-- Name -->
+      <div class="bg-[#ffffff] h-[92px] flex justify-center items-center">
+        <p class="font-HamonBold text-[24px] text-[#000000] opacity-30">
+          Tell your name
+        </p>
+      </div>
+
+      <!-- Gender selection -->
+
+      <div class="flex justify-center my-[24px] gap-[25px]">
+        <div class="size-[168px] bg-[#ffffff] relative">
+          <p
+            class="font-HamonBold text-[24px] text-[#000000] opacity-30 absolute bottom-2 left-1/2 -translate-x-1/2"
+          >
+            Male
+          </p>
+        </div>
+        <div class="size-[168px] bg-[#ffffff] relative">
+          <p
+            class="font-HamonBold text-[24px] text-[#000000] opacity-30 absolute bottom-2 left-1/2 -translate-x-1/2"
+          >
+            Female
+          </p>
+        </div>
+      </div>
+
+      <!-- Study -->
+      <div
+        class="bg-[#ffffff] h-[92px] flex justify-center items-center mt-[10px]"
+      >
+        <p class="font-HamonBold text-[24px] text-[#000000] opacity-30">
+          Where you studied?
+        </p>
+      </div>
+
+      <div class="bg-[#ffffff] h-[92px] opacity-60 mt-[6px]"></div>
+      <div class="bg-[#ffffff] h-[92px] opacity-40"></div>
+      <div class="bg-[#ffffff] h-[92px] opacity-20"></div>
+      <div class="bg-[#ffffff] h-[92px] opacity-10"></div>
+    </div>
   </main>
-
-  <!-- Take Quiz confirmation popup -->
-  <QuizPopup />
 </Vacancies>
