@@ -1,64 +1,209 @@
 ---
+import Headline from "@components/about/Headline.astro";
+import PageTransition from "@components/about/PageTransition.astro";
 import Layout from "@layouts/Layout.astro";
 import { Image } from "astro:assets";
 ---
 
 <Layout title="About">
   <section
-    class="bg-[#2933AF] h-[100dvh] px-4 lg:px-[75px] pt-[26px] pb-[4vh] flex flex-col lg:justify-between gap-10 overflow-hidden"
+    class="bg-[#2933AF] h-[100dvh] px-[11px] sm:px-[27px] md:px-[43px] 2xl:px-[75px] pt-[10px] sm:pt-[16px] md:pt-[21px] 2xl:pt-[26px] pb-[4vh] overflow-hidden"
   >
-    <div class="max-w-[3840px] w-full mx-auto">
-      <!-- Alter office logo -->
-      <Image
-        src="/images/misc/tao_logo.png"
-        alt="Alter_Office_Logo"
-        width={212}
-        height={72}
-        loading="eager"
-      />
+    <div
+      class="inner-container flex flex-col gap-36 md:gap-0 md:justify-between h-full"
+    >
+      <!-- Logo section -->
+      <div class="w-full">
+        <Image
+          src="/images/misc/tao_logo.png"
+          alt="Alter_Office_Logo"
+          width={212}
+          height={72}
+          loading="eager"
+          class="w-[164px] h-[56px] sm:w-[188px] sm:h-[64px] md:w-[212px] md:h-[72px]"
+        />
+      </div>
+
+      <!-- Main content - flex-grow for remaining space -->
+      <main
+        class="flex flex-col flex-grow md:flex-grow-0 md:justify-between gap-[50px] md:gap-12"
+      >
+        <!-- Headline -->
+        <Headline
+          defaultStyles={false}
+          class="text-white tracking-[-4.2px] leading-[clamp(3.625rem,1.125rem+7.5vw,7.875rem)]"
+        >
+          <p>We are</p>
+          <p>The Alter Office.</p>
+        </Headline>
+
+        <!-- Sections container -->
+        <div class="md:px-4 flex flex-col flex-grow md:flex-grow-0">
+          <div
+            class="w-full grid grid-cols-1 md:grid-cols-[1.4fr_1fr_1fr] lg:grid-cols-[1.5fr_1fr_1fr] gap-[25px] md:gap-[35px] xl:gap-[55px] h-full md:h-[426px]"
+          >
+            <!-- Sections -->
+            <a
+              href="/about/culture/1"
+              class="bg-[#FFE135] h-full relative cursor-pointer"
+            >
+              <div
+                class="font-HamonBold text-[clamp(2.8rem,1.929rem+2.857vw,4.5rem)] leading-[clamp(2.5rem,1.616rem+2.857vw,4.188rem)] tracking-[-2.02px] md:absolute md:bottom-[10px] md:left-[15px] lg:bottom-[10px] lg:left-[20px] xl:bottom-[18px] xl:left-[28px] mx-6 my-8 md:m-0"
+              >
+                <p>Know our</p>
+                <p>Culture.</p>
+              </div>
+
+              <div
+                class="size-[70px] sm:size-[98px] absolute bottom-0 right-0 border-b border-r border-[#FFE135] bg-[#000000] flex items-center justify-center"
+              >
+                <Image
+                  src="/images/misc/forward_arrow.svg"
+                  alt="Forward_Arrow"
+                  width={42}
+                  height={42}
+                  loading="lazy"
+                  class="size-[28px] sm:size-[42px]"
+                />
+              </div>
+            </a>
+
+            <a
+              href="/about/mindset/1"
+              class="bg-[#12FF00] h-full relative cursor-pointer"
+            >
+              <div
+                class="font-HamonBold text-[clamp(2.8rem,1.929rem+2.857vw,4.5rem)] leading-[clamp(2.5rem,1.616rem+2.857vw,4.188rem)] tracking-[-2.02px] md:absolute md:bottom-[10px] md:left-[15px] lg:bottom-[10px] lg:left-[20px] xl:bottom-[18px] xl:left-[28px] mx-6 my-8 md:m-0"
+              >
+                <p>Read our</p>
+                <p>thoughts.</p>
+              </div>
+            </a>
+
+            <a
+              href="/about/vacancies/1"
+              class="bg-[#E51A22] h-full relative cursor-pointer"
+            >
+              <div
+                class="font-HamonBold text-[clamp(2.8rem,1.929rem+2.857vw,4.5rem)] leading-[clamp(2.5rem,1.616rem+2.857vw,4.188rem)] md:absolute md:bottom-[10px] md:left-[15px] lg:bottom-[10px] lg:left-[20px] xl:bottom-[18px] xl:left-[28px] text-[#ffffff] mx-6 my-8 md:m-0"
+              >
+                <p>Be part of</p>
+                <p>the team.</p>
+              </div>
+            </a>
+          </div>
+          <div class="bg-[#12FF00] h-[38px] w-[32%] mt-5 hidden md:block"></div>
+        </div>
+      </main>
     </div>
 
-    <!-- Main content -->
-    <main class="max-w-[3840px] w-full mx-auto flex flex-col gap-[7vh]">
-      <!-- Main text heading -->
-      <div
-        class="font-HamonBold text-[clamp(50px,min(12vw,13vh),300px)] leading-[clamp(45px,min(10vw,11vh),252px)] tracking-[-4.2px] text-white"
-      >
-        <p>We are</p>
-        <p>The Alter Office.</p>
-      </div>
-
-      <div>
-        <!-- Section containers -->
-        <div
-          class="w-full h-[40vh] grid lg:grid-cols-[1.5fr_1fr_1fr] gap-[2.5vw]"
-        >
-          <!-- Know your culture -->
-          <div class="box bg-[#FFE135]"></div>
-
-          <!-- Read our thoughts -->
-          <div class="box bg-[#12FF00]"></div>
-
-          <!-- Be part of the team -->
-          <div class="box bg-[#E51A22]"></div>
-        </div>
-
-        <!-- <div class="bg-[#12FF00] h-[3vh] w-[35%] mt-5"></div> -->
-      </div>
-    </main>
+    <PageTransition id="gif-overlay" />
   </section>
 
   <style>
-    @media (max-height: 550px) {
+    .inner-container {
+      visibility: hidden;
+    }
+
+    @media (max-height: 350px) {
       section {
         height: auto !important;
-        min-height: 550px;
+        min-height: 350px;
         overflow-y: auto !important;
-        justify-content: flex-start !important;
-      }
-      .box {
-        height: 220px;
       }
     }
   </style>
+
+  <!-- Script -->
+
+  <script>
+    // Page transition start
+    document.addEventListener("DOMContentLoaded", () => {
+      const links = document.querySelectorAll<HTMLAnchorElement>("a[href]");
+      const gifOverlay = document.getElementById("gif-overlay");
+
+      if (!gifOverlay) {
+        console.error("GIF overlay not found in the DOM.");
+        return;
+      }
+
+      const gifDuration = 3500; // Adjust based on actual GIF length (in ms)
+
+      links.forEach((link) => {
+        link.addEventListener("click", (event) => {
+          event.preventDefault(); // Stop immediate navigation
+
+          const targetURL = link.href; // Now properly inferred as string
+          gifOverlay.classList.remove("hidden");
+
+          // Wait for the GIF animation to finish, then navigate
+          setTimeout(() => {
+            window.location.href = targetURL;
+          }, gifDuration);
+        });
+      });
+    });
+
+    // Page transition end
+
+    // Calculate zoom start
+    function calculateBaseZoom() {
+      const minZoom = 0.35;
+      const maxZoom = 1.9;
+      const minHeight = 350;
+      const maxHeight = 2160;
+      const viewportHeight = window.innerHeight;
+
+      return Math.max(
+        minZoom,
+        Math.min(
+          maxZoom,
+          minZoom +
+            (maxZoom - minZoom) *
+              ((viewportHeight - minHeight) / (maxHeight - minHeight))
+        )
+      );
+    }
+
+    // Initialize with proper zoom based on current viewport
+    let lastComputedZoom = calculateBaseZoom();
+
+    function setFluidZoom() {
+      const widthBreakpoint = 1440;
+      const viewportWidth = window.innerWidth;
+
+      // Always calculate height-based zoom
+      let heightZoom = calculateBaseZoom();
+      let finalZoom = heightZoom;
+
+      if (viewportWidth >= widthBreakpoint) {
+        // Above breakpoint: apply width constraints
+        const widthZoom = viewportWidth / 1920;
+        finalZoom = Math.min(heightZoom, widthZoom);
+        lastComputedZoom = finalZoom;
+      } else {
+        // Below breakpoint: use the most constrained zoom
+        finalZoom = Math.min(lastComputedZoom, heightZoom);
+
+        // Special case: if we're loading below 1440px initially,
+        // use height-based zoom but prevent it from being larger
+        // than what it would be at 1440px width
+        if (lastComputedZoom === heightZoom) {
+          const hypotheticalWidthZoom = 1440 / 1920;
+          finalZoom = Math.min(heightZoom, hypotheticalWidthZoom);
+          lastComputedZoom = finalZoom;
+        }
+      }
+
+      const innerContainer = document.querySelector(".inner-container");
+      if (innerContainer instanceof HTMLElement) {
+        innerContainer.style.zoom = String(finalZoom);
+        innerContainer.style.visibility = "visible";
+      }
+    }
+
+    window.addEventListener("load", setFluidZoom);
+    window.addEventListener("resize", setFluidZoom);
+    // Calculate zoom end
+  </script>
 </Layout>

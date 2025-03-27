@@ -28,8 +28,9 @@ const { prevPage, nextPage } = Astro.props;
       </div>
 
       <!-- Close btn -->
-      <div
-        class="size-[70px] sm:size-[98px] absolute top-0 right-0 bg-[#000000] flex items-center justify-center"
+      <a
+        href="/about"
+        class="size-[70px] sm:size-[98px] absolute top-0 right-0 bg-[#000000] flex items-center justify-center cursor-pointer"
       >
         <Image
           src="/images/misc/close.svg"
@@ -39,7 +40,7 @@ const { prevPage, nextPage } = Astro.props;
           loading="eager"
           class="size-[28px] sm:size-[42px]"
         />
-      </div>
+      </a>
 
       <!-- Main content -->
       <slot />

@@ -1,0 +1,52 @@
+<dialog
+  id="honestyDialog"
+  class="w-full md:w-[1170px] bg-[#000000] absolute bottom-0 left-1/2 -translate-x-1/2 pt-14 px-8 sm:px-[89px]"
+>
+  <!-- Lottie -->
+  <div class="size-[180px] bg-white rounded-3xl mx-auto"></div>
+
+  <p
+    class="text-center text-[#ffffff] font-HamonBold text-[40px] leading-[40px] sm:text-[52px] sm:leading-[52px] mt-12"
+  >
+    For this quiz to work we need a software called Honesty* to be installed in
+    your answers!😉
+  </p>
+
+  <div class="flex flex-col items-center gap-16 mt-12">
+    <button
+      class="px-[29px] py-[30px] bg-[#12FF00] font-HamonBold text-[26px] leading-[26px] sm:text-[30px] sm:leading-[30px] cursor-pointer"
+    >
+      <p class="relative top-[2px]">I'll use "Honesty" in answers</p>
+    </button>
+
+    <button
+      id="noHonestyBtn"
+      class="font-HamonBold text-[26px] leading-[26px] sm:text-[30px] sm:leading-[30px] cursor-pointer underline text-white"
+    >
+      No, i don't want "Honesty"
+    </button>
+  </div>
+
+  <p
+    class="font-HamonLight text-[#ffffff] opacity-50 text-[22px] leading-[30px] text-center mt-36 mb-6"
+  >
+    *For noobs - It's a joke. Honesty is not a real software its a trait of a
+    professional.
+  </p>
+</dialog>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const dialog = document.getElementById("honestyDialog");
+    const noButton = document.getElementById("noHonestyBtn");
+    const takeQuizButton = document.getElementById("takeQuizBtn");
+
+    takeQuizButton?.addEventListener("click", function () {
+      dialog?.setAttribute("open", "true");
+    });
+
+    noButton?.addEventListener("click", function () {
+      dialog?.removeAttribute("open");
+    });
+  });
+</script>
