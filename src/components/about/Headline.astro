@@ -9,11 +9,52 @@ const { class: className, defaultStyles = true } = Astro.props;
 
 <div
   class:list={[
+    "headline",
     defaultStyles && "leading-[clamp(3.625rem,0.982rem+8.214vw,8.375rem)]",
     "text-[clamp(4rem,1.179rem+9.107vw,9.375rem)]",
     "font-HamonBold",
     className,
   ]}
 >
-  <slot />
+  <div class="relative">
+    <slot />
+  </div>
 </div>
+
+<!-- <script is:inline>
+  document.addEventListener("DOMContentLoaded", () => {
+    const headline = document.querySelector(".headline");
+    const paragraphs = headline.querySelectorAll("p");
+
+    // Wrap each line in a container with overflow hidden
+    paragraphs.forEach((p) => {
+      const wrapper = document.createElement("div");
+      wrapper.className = "relative overflow-hidden h-[1em]";
+      p.parentNode.insertBefore(wrapper, p);
+      wrapper.appendChild(p);
+
+      // Set initial position
+      gsap.set(p, {
+        y: "110%",
+        display: "block",
+      });
+    });
+
+    // Animate all lines simultaneously from their own baseline
+    gsap.to(paragraphs, {
+      y: "0%",
+      duration: 1.5,
+      ease: "power4.out",
+      delay: 0.1,
+    });
+  });
+</script> -->
+
+<script>
+  gsap.from(".headline", {
+    opacity: 0,
+    duration: 0.8,
+    y: 50,
+    delay: 0.3,
+  });
+</script>

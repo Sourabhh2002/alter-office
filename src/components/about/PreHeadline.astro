@@ -8,9 +8,19 @@ const { class: className } = Astro.props;
 
 <p
   class:list={[
+    "pre__headline",
     "font-HamonLight text-[clamp(2rem,0.714rem+3.929vw,4.25rem)] leading-[clamp(1.063rem,0.259rem+4.018vw,3.875rem)] h-[clamp(1.813rem,0.866rem+4.732vw,5.125rem)]",
     className,
   ]}
 >
   <slot />
 </p>
+
+<script>
+  gsap.from(".pre__headline", {
+    opacity: 0,
+    duration: 1,
+    x: -50,
+    delay: 0.25,
+  });
+</script>
