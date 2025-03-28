@@ -2,6 +2,8 @@
 import PreHeadline from "@components/about/PreHeadline.astro";
 import Tagline from "@components/about/Tagline.astro";
 import Vacancies from "@layouts/about/Vacancies.astro";
+
+const items = ["Flutter", "React Native", "Python", "MySQL", "NodeJS"];
 ---
 
 <Vacancies prevPage="/about/vacancies/3" nextPage="/about/vacancies/5">
@@ -20,5 +22,15 @@ import Vacancies from "@layouts/about/Vacancies.astro";
     <Tagline class="mt-8 text-center mx-auto"
       >Rearrange based on expertise below</Tagline
     >
+
+    <div class="flex flex-col items-center gap-2 mt-10">
+      {
+        items.map((item) => (
+          <div class="h-[80px] bg-[#ffffff] text-[#E51A22] font-HamonBold text-[54px] leading-[74px] min-w-[270px] px-10 flex items-center justify-center">
+            <p class="relative top-1">{item}</p>
+          </div>
+        ))
+      }
+    </div>
   </main>
 </Vacancies>
