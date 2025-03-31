@@ -8,27 +8,109 @@ import Mindset from "@layouts/about/Mindset.astro";
 <Mindset prevPage="/about/mindset/9">
   <!-- Main content -->
   <main class="w-full mt-40 md:mt-[97px] px-4 lg:px-[75px]">
-    <PreHeadline class="flex items-end justify-center">
+    <PreHeadline id="pre__headline" class="flex items-end justify-center">
       The Alter Office Way
     </PreHeadline>
 
-    <Headline class="text-center mt-8 sm:mt-4 md:mt-2">
+    <Headline id="headline" class="text-center mt-8 sm:mt-4 md:mt-2">
       <p>We don’t do process for</p>
       <p>the sake of process.</p>
       <p>We build, we ship,</p>
       <p>we move.</p>
     </Headline>
 
-    <!-- <div
-      class="font-HamonBold text-[26px] leading-[30px] opacity-90 w-[732px] mt-4 mx-auto text-center"
+    <Tagline
+      id="tagline"
+      class="mt-8 md:mt-6 mx-auto text-center px-16 sm:px-0"
     >
-      We’re not here for meetings, approvals, or endless back-and-forths. We
-      work fast, we work smart, and we get things done.
-    </div> -->
-
-    <Tagline class="mt-8 md:mt-6 mx-auto text-center px-16 sm:px-0">
       We’re not here for meetings, approvals, or endless back-and-forths. We
       work fast, we work smart, and we get things done.
     </Tagline>
   </main>
+
+  <script is:inline>
+    // Intro animations
+    const introAnimations = () => {
+      gsap.from("#pre__headline", {
+        duration: 1.45,
+        x: 250,
+        opacity: 0,
+        ease: "power2.inOut",
+      });
+
+      gsap.from("#headline", {
+        duration: 1.25,
+        x: -2000,
+        ease: "power2.inOut",
+      });
+
+      gsap.from("#tagline", {
+        duration: 1.35,
+        x: 1500,
+        ease: "power2.inOut",
+      });
+    };
+
+    // Outro animations
+    const outroAnimations = (nextPageUrl) => {
+      const timeline = gsap.timeline({
+        onComplete: () => {
+          window.location.href = nextPageUrl;
+        },
+      });
+
+      timeline.to("#pre__headline", {
+        duration: 0.75,
+        x: 250,
+        opacity: 0,
+        ease: "power2.inOut",
+      });
+
+      timeline.to(
+        "#headline",
+        {
+          duration: 0.75,
+          x: -2000,
+          ease: "power2.inOut",
+        },
+        "-=0.5"
+      );
+
+      timeline.to(
+        "#alter__office__logo",
+        {
+          duration: 0.5,
+          y: -120,
+          ease: "power2.inOut",
+        },
+        "-=0.5"
+      );
+
+      timeline.to(
+        "#tagline",
+        {
+          duration: 0.75,
+          x: 1550,
+          ease: "power2.inOut",
+        },
+        "-=0.5"
+      );
+    };
+
+    // Run intro animations on page load
+    introAnimations();
+
+    // Set up navigation with outro animations
+    document.addEventListener("DOMContentLoaded", () => {
+      const prevButton = document.querySelector('a[href="/about/mindset/9"]');
+
+      if (prevButton) {
+        prevButton.addEventListener("click", (e) => {
+          e.preventDefault();
+          const prevPage = e.currentTarget.getAttribute("href");
+          outroAnimations(prevPage);
+        });
+      }
+    });
+  </script>
 </Mindset>

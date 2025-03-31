@@ -8,23 +8,17 @@ import Mindset from "@layouts/about/Mindset.astro";
 <Mindset prevPage="/about/mindset/8" nextPage="/about/mindset/10">
   <!-- Main content -->
   <main class="w-full mt-40 md:mt-[97px] px-6 lg:px-[75px]">
-    <PreHeadline class="flex items-end justify-center">
+    <PreHeadline id="pre__headline" class="flex items-end justify-center">
       Showing Up Matters
     </PreHeadline>
 
-    <Headline class="text-center mt-8 sm:mt-4">
+    <Headline id="headline" class="text-center mt-8 sm:mt-4">
       <p>Talent means nothing if</p>
       <p>you’re not in the game.</p>
     </Headline>
 
-    <!-- <div
-      class="font-HamonBold text-[26px] leading-[30px] opacity-90 w-[732px] mt-14 text-center mx-auto relative right-[450px]"
-    >
-      The best skills in the world won’t help if you don’t show up when it
-      matters. Reliability > Raw talent. Your team should never have to wonder
-      if you’ll deliver.
-    </div> -->
     <Tagline
+      id="tagline"
       class="px-6 sm:px-0 mt-8 md:mt-14 text-center mx-auto relative lg:right-[300px] xl:right-[450px]"
     >
       The best skills in the world won’t help if you don’t show up when it
@@ -32,4 +26,99 @@ import Mindset from "@layouts/about/Mindset.astro";
       if you’ll deliver.
     </Tagline>
   </main>
+
+  <script is:inline>
+    // Intro animations
+    const introAnimations = () => {
+      gsap.from("#pre__headline", {
+        duration: 1.45,
+        x: -250,
+        opacity: 0,
+        ease: "power2.inOut",
+      });
+
+      gsap.from("#headline", {
+        duration: 1.25,
+        x: 2000,
+        ease: "power2.inOut",
+      });
+
+      gsap.from("#tagline", {
+        duration: 1.35,
+        x: -1000,
+        ease: "power2.inOut",
+      });
+    };
+
+    // Outro animations
+    const outroAnimations = (nextPageUrl) => {
+      const timeline = gsap.timeline({
+        onComplete: () => {
+          window.location.href = nextPageUrl;
+        },
+      });
+
+      timeline.to("#pre__headline", {
+        duration: 0.75,
+        x: -250,
+        opacity: 0,
+        ease: "power2.inOut",
+      });
+
+      timeline.to(
+        "#headline",
+        {
+          duration: 0.75,
+          x: 2000,
+          ease: "power2.inOut",
+        },
+        "-=0.5"
+      );
+
+      timeline.to(
+        "#alter__office__logo",
+        {
+          duration: 0.5,
+          y: -120,
+          ease: "power2.inOut",
+        },
+        "-=0.5"
+      );
+
+      timeline.to(
+        "#tagline",
+        {
+          duration: 0.75,
+          x: -1000,
+          ease: "power2.inOut",
+        },
+        "-=0.5"
+      );
+    };
+
+    // Run intro animations on page load
+    introAnimations();
+
+    // Set up navigation with outro animations
+    document.addEventListener("DOMContentLoaded", () => {
+      const nextButton = document.querySelector('a[href="/about/mindset/10"]');
+      const prevButton = document.querySelector('a[href="/about/mindset/8"]');
+
+      if (nextButton) {
+        nextButton.addEventListener("click", (e) => {
+          e.preventDefault();
+          const nextPage = e.currentTarget.getAttribute("href");
+          outroAnimations(nextPage);
+        });
+      }
+
+      if (prevButton) {
+        prevButton.addEventListener("click", (e) => {
+          e.preventDefault();
+          const prevPage = e.currentTarget.getAttribute("href");
+          outroAnimations(prevPage);
+        });
+      }
+    });
+  </script>
 </Mindset>

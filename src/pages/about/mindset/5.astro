@@ -10,18 +10,119 @@ import Mindset from "@layouts/about/Mindset.astro";
   <main
     class="w-full mt-40 md:mt-[98px] px-6 sm:px-[27px] md:px-[50px] lg:px-[75px]"
   >
-    <PreHeadline class="flex items-end"> Empathy Over Aesthetics </PreHeadline>
+    <PreHeadline id="pre__headline" class="flex items-end">
+      Empathy Over Aesthetics
+    </PreHeadline>
 
-    <Headline class="mt-8">
+    <Headline id="headline" class="mt-8">
       <p class="xl:text-nowrap">"Good UX is like oxygen—</p>
       <p>if you notice it,</p>
       <p>something’s wrong."</p>
     </Headline>
 
-    <Tagline class="mt-8 md:mt-12 lg:ml-auto lg:relative lg:right-[270px]">
+    <Tagline
+      id="tagline"
+      class="mt-8 md:mt-12 lg:ml-auto lg:relative lg:right-[270px]"
+    >
       Users don’t care about your fancy UI—they care about how it makes them
       feel and what it lets them do. If the experience feels natural and
       effortless, you’ve done your job.
     </Tagline>
   </main>
+
+  <script is:inline>
+    // Intro animations
+    const introAnimations = () => {
+      gsap.from("#pre__headline", {
+        delay: 0,
+        duration: 1.45,
+        x: 250,
+        opacity: 0,
+        ease: "power2.inOut",
+      });
+
+      gsap.from("#headline", {
+        duration: 1.25,
+        x: -2000,
+        ease: "power2.inOut",
+      });
+
+      gsap.from("#tagline", {
+        duration: 1.35,
+        x: 1100,
+        ease: "power2.inOut",
+      });
+    };
+
+    // Outro animations
+    const outroAnimations = (nextPageUrl) => {
+      const timeline = gsap.timeline({
+        onComplete: () => {
+          window.location.href = nextPageUrl;
+        },
+      });
+
+      timeline.to("#pre__headline", {
+        duration: 0.75,
+        x: 250,
+        opacity: 0,
+        ease: "power2.inOut",
+      });
+
+      timeline.to(
+        "#headline",
+        {
+          duration: 0.75,
+          x: -2000,
+          ease: "power2.inOut",
+        },
+        "-=0.5"
+      );
+
+      timeline.to(
+        "#alter__office__logo",
+        {
+          duration: 0.5,
+          y: -120,
+          ease: "power2.inOut",
+        },
+        "-=0.5"
+      );
+
+      timeline.to(
+        "#tagline",
+        {
+          duration: 0.75,
+          x: 1100,
+          ease: "power2.inOut",
+        },
+        "-=0.5"
+      );
+    };
+
+    // Run intro animations on page load
+    introAnimations();
+
+    // Set up navigation with outro animations
+    document.addEventListener("DOMContentLoaded", () => {
+      const nextButton = document.querySelector('a[href="/about/mindset/4"]');
+      const prevButton = document.querySelector('a[href="/about/mindset/6"]');
+
+      if (nextButton) {
+        nextButton.addEventListener("click", (e) => {
+          e.preventDefault();
+          const nextPage = e.currentTarget.getAttribute("href");
+          outroAnimations(nextPage);
+        });
+      }
+
+      if (prevButton) {
+        prevButton.addEventListener("click", (e) => {
+          e.preventDefault();
+          const prevPage = e.currentTarget.getAttribute("href");
+          outroAnimations(prevPage);
+        });
+      }
+    });
+  </script>
 </Mindset>

@@ -24,6 +24,13 @@ import { Image } from "astro:assets";
         />
       </div>
 
+      <!-- Overlay bordered text -->
+      <div
+        class="font-HamonOutline text-[clamp(9.375rem,7.571rem+9.018vw,15.688rem)] sm:leading-[290px] absolute sm:right-[200px] top-[-30px] right-3 sm:top-[-96.5px] opacity-40 text-[#ffffff] tracking-[-0.02em] sm:tracking-[0]"
+      >
+        About
+      </div>
+
       <!-- Main content - flex-grow for remaining space -->
       <main
         class="flex flex-col flex-grow md:flex-grow-0 md:justify-between gap-[50px] md:gap-12"
@@ -96,8 +103,6 @@ import { Image } from "astro:assets";
         </div>
       </main>
     </div>
-
-    <PageTransition id="gif-overlay" />
   </section>
 
   <style>
@@ -117,35 +122,6 @@ import { Image } from "astro:assets";
   <!-- Script -->
 
   <script>
-    // Page transition start
-    document.addEventListener("DOMContentLoaded", () => {
-      const links = document.querySelectorAll<HTMLAnchorElement>("a[href]");
-      const gifOverlay = document.getElementById("gif-overlay");
-
-      if (!gifOverlay) {
-        console.error("GIF overlay not found in the DOM.");
-        return;
-      }
-
-      const gifDuration = 3500; // Adjust based on actual GIF length (in ms)
-
-      links.forEach((link) => {
-        link.addEventListener("click", (event) => {
-          event.preventDefault(); // Stop immediate navigation
-
-          const targetURL = link.href; // Now properly inferred as string
-          gifOverlay.classList.remove("hidden");
-
-          // Wait for the GIF animation to finish, then navigate
-          setTimeout(() => {
-            window.location.href = targetURL;
-          }, gifDuration);
-        });
-      });
-    });
-
-    // Page transition end
-
     // Calculate zoom start
     function calculateBaseZoom() {
       const minZoom = 0.35;

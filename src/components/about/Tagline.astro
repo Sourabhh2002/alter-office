@@ -1,12 +1,14 @@
 ---
 interface Props {
+  id?: string;
   class?: string;
 }
 
-const { class: className } = Astro.props;
+const { id, class: className } = Astro.props;
 ---
 
 <div
+  id={id}
   class:list={[
     "tagline",
     "font-HamonBold text-[clamp(1.425rem,0.982rem+0.714vw,1.625rem)] leading-[clamp(1.675rem,1.232rem+0.714vw,1.875rem)] opacity-90 sm:w-[732px]",
@@ -15,12 +17,3 @@ const { class: className } = Astro.props;
 >
   <slot />
 </div>
-
-<script>
-  gsap.from(".tagline", {
-    opacity: 0,
-    duration: 1,
-    x: 35,
-    delay: 0.25,
-  });
-</script>

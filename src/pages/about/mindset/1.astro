@@ -8,11 +8,12 @@ import Mindset from "@layouts/about/Mindset.astro";
 <Mindset prevPage="/about" nextPage="/about/mindset/2">
   <!-- Main content -->
   <main class="w-full mt-40 md:mt-[85px] px-6 lg:px-[49px]">
-    <PreHeadline class="flex items-end justify-center">
+    <PreHeadline id="pre__headline" class="flex items-end justify-center">
       Substance Over Theater
     </PreHeadline>
 
     <Headline
+      id="headline"
       defaultStyles={false}
       class="text-center leading-[clamp(3.625rem,0.732rem+9.464vw,9.25rem)] mt-8 sm:mt-4 md:mt-[10px] lg:mt-0"
     >
@@ -22,6 +23,7 @@ import Mindset from "@layouts/about/Mindset.astro";
     </Headline>
 
     <Tagline
+      id="tagline"
       class="mt-8 sm:ml-auto md:relative md:right-[0px] lg:right-[150px] text-center sm:text-left px-4 sm-px-0"
     >
       Great ideas don't live in Figma or Notion—they live in real products. If
@@ -29,4 +31,89 @@ import Mindset from "@layouts/about/Mindset.astro";
       looks. Execution > Perfection.
     </Tagline>
   </main>
+
+  <script is:inline>
+    // Intro animations
+    const introAnimations = () => {
+      gsap.from("#pre__headline", {
+        duration: 1.45,
+        x: 250,
+        opacity: 0,
+        ease: "power2.inOut",
+      });
+
+      gsap.from("#headline", {
+        duration: 1.25,
+        x: -2000,
+        ease: "power2.inOut",
+      });
+
+      gsap.from("#tagline", {
+        duration: 1.35,
+        x: 1000,
+        ease: "power2.inOut",
+      });
+    };
+
+    // Outro animations
+    const outroAnimations = (nextPageUrl) => {
+      const timeline = gsap.timeline({
+        onComplete: () => {
+          window.location.href = nextPageUrl;
+        },
+      });
+
+      timeline.to("#pre__headline", {
+        duration: 0.75,
+        x: 250,
+        opacity: 0,
+        ease: "power2.inOut",
+      });
+
+      timeline.to(
+        "#headline",
+        {
+          duration: 0.75,
+          x: -2000,
+          ease: "power2.inOut",
+        },
+        "-=0.5"
+      );
+
+      timeline.to(
+        "#alter__office__logo",
+        {
+          duration: 0.5,
+          y: -120,
+          ease: "power2.inOut",
+        },
+        "-=0.5"
+      );
+
+      timeline.to(
+        "#tagline",
+        {
+          duration: 0.75,
+          x: 1000,
+          ease: "power2.inOut",
+        },
+        "-=0.5"
+      );
+    };
+
+    // Run intro animations on page load
+    introAnimations();
+
+    // Set up navigation with outro animations
+    document.addEventListener("DOMContentLoaded", () => {
+      const nextButton = document.querySelector('a[href="/about/mindset/2"]');
+      if (nextButton) {
+        nextButton.addEventListener("click", (e) => {
+          e.preventDefault();
+          const nextPage = e.currentTarget.getAttribute("href");
+          outroAnimations(nextPage);
+        });
+      }
+    });
+  </script>
 </Mindset>

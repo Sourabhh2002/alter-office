@@ -8,17 +8,18 @@ import Mindset from "@layouts/about/Mindset.astro";
 <Mindset prevPage="/about/mindset/3" nextPage="/about/mindset/5">
   <!-- Main content -->
   <main class="w-full mt-40 md:mt-[89px] px-4 lg:px-[75px]">
-    <PreHeadline class="flex items-end justify-center">
+    <PreHeadline id="pre__headline" class="flex items-end justify-center">
       Collaboration Without Hand-Holding
     </PreHeadline>
 
-    <Headline class="text-center mt-8 sm:mt-4">
+    <Headline id="headline" class="text-center mt-8 sm:mt-4">
       <p>"We don’t pass the ball,</p>
       <p>we score the goal</p>
       <p>together."</p>
     </Headline>
 
     <Tagline
+      id="tagline"
       class="mt-8 md:mt-14 sm:ml-auto md:relative md:right-[0px] lg:right-[270px] text-center sm:text-left px-4 sm-px-0"
     >
       Everyone here is a decision-maker. We work together, but you won’t be
@@ -26,4 +27,99 @@ import Mindset from "@layouts/about/Mindset.astro";
       do.
     </Tagline>
   </main>
+
+  <script is:inline>
+    // Intro animations
+    const introAnimations = () => {
+      gsap.from("#pre__headline", {
+        duration: 1.45,
+        x: 350,
+        opacity: 0,
+        ease: "power2.inOut",
+      });
+
+      gsap.from("#headline", {
+        duration: 1.25,
+        x: -2000,
+        ease: "power2.inOut",
+      });
+
+      gsap.from("#tagline", {
+        duration: 1.4,
+        x: 1100,
+        ease: "power2.inOut",
+      });
+    };
+
+    // Outro animations
+    const outroAnimations = (nextPageUrl) => {
+      const timeline = gsap.timeline({
+        onComplete: () => {
+          window.location.href = nextPageUrl;
+        },
+      });
+
+      timeline.to("#pre__headline", {
+        duration: 0.75,
+        x: 350,
+        opacity: 0,
+        ease: "power2.inOut",
+      });
+
+      timeline.to(
+        "#headline",
+        {
+          duration: 0.75,
+          x: -2000,
+          ease: "power2.inOut",
+        },
+        "-=0.5"
+      );
+
+      timeline.to(
+        "#alter__office__logo",
+        {
+          duration: 0.5,
+          y: -120,
+          ease: "power2.inOut",
+        },
+        "-=0.5"
+      );
+
+      timeline.to(
+        "#tagline",
+        {
+          duration: 0.75,
+          x: 1100,
+          ease: "power2.inOut",
+        },
+        "-=0.5"
+      );
+    };
+
+    // Run intro animations on page load
+    introAnimations();
+
+    // Set up navigation with outro animations
+    document.addEventListener("DOMContentLoaded", () => {
+      const nextButton = document.querySelector('a[href="/about/mindset/5"]');
+      const prevButton = document.querySelector('a[href="/about/mindset/3"]');
+
+      if (nextButton) {
+        nextButton.addEventListener("click", (e) => {
+          e.preventDefault();
+          const nextPage = e.currentTarget.getAttribute("href");
+          outroAnimations(nextPage);
+        });
+      }
+
+      if (prevButton) {
+        prevButton.addEventListener("click", (e) => {
+          e.preventDefault();
+          const prevPage = e.currentTarget.getAttribute("href");
+          outroAnimations(prevPage);
+        });
+      }
+    });
+  </script>
 </Mindset>
