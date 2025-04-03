@@ -33,7 +33,9 @@ import Mindset from "@layouts/about/Mindset.astro";
     </div>
   </main>
 
-  <script is:inline>
+  <script>
+    declare const gsap: any;
+
     // Intro animations
     const introAnimations = () => {
       gsap.from("#pre__headline", {
@@ -58,7 +60,7 @@ import Mindset from "@layouts/about/Mindset.astro";
     };
 
     // Outro animations
-    const outroAnimations = (nextPageUrl) => {
+    const outroAnimations = (nextPageUrl: string) => {
       const timeline = gsap.timeline({
         onComplete: () => {
           window.location.href = nextPageUrl;
@@ -83,16 +85,6 @@ import Mindset from "@layouts/about/Mindset.astro";
       );
 
       timeline.to(
-        "#alter__office__logo",
-        {
-          duration: 0.5,
-          y: -120,
-          ease: "power2.inOut",
-        },
-        "-=0.5"
-      );
-
-      timeline.to(
         "#tagline",
         {
           duration: 0.75,
@@ -107,25 +99,27 @@ import Mindset from "@layouts/about/Mindset.astro";
     introAnimations();
 
     // Set up navigation with outro animations
-    document.addEventListener("DOMContentLoaded", () => {
-      const nextButton = document.querySelector('a[href="/about/mindset/3"]');
-      const prevButton = document.querySelector('a[href="/about/mindset/1"]');
+    const nextButton = document.querySelector('a[href="/about/mindset/3"]');
+    const prevButton = document.querySelector('a[href="/about/mindset/1"]');
 
-      if (nextButton) {
-        nextButton.addEventListener("click", (e) => {
-          e.preventDefault();
-          const nextPage = e.currentTarget.getAttribute("href");
+    if (nextButton) {
+      nextButton.addEventListener("click", (e) => {
+        e.preventDefault();
+        const nextPage = nextButton.getAttribute("href");
+        if (nextPage) {
           outroAnimations(nextPage);
-        });
-      }
+        }
+      });
+    }
 
-      if (prevButton) {
-        prevButton.addEventListener("click", (e) => {
-          e.preventDefault();
-          const prevPage = e.currentTarget.getAttribute("href");
+    if (prevButton) {
+      prevButton.addEventListener("click", (e) => {
+        e.preventDefault();
+        const prevPage = prevButton.getAttribute("href");
+        if (prevPage) {
           outroAnimations(prevPage);
-        });
-      }
-    });
+        }
+      });
+    }
   </script>
 </Mindset>

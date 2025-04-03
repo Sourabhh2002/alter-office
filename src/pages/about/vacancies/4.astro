@@ -1,12 +1,12 @@
 ---
 import PreHeadline from "@components/about/PreHeadline.astro";
 import Tagline from "@components/about/Tagline.astro";
+import RearrangeSkills from "@components/about/vacancies/RearrangeSkills";
 import Vacancies from "@layouts/about/Vacancies.astro";
-
-const items = ["Flutter", "React Native", "Python", "MySQL", "NodeJS"];
+import { Image } from "astro:assets";
 ---
 
-<Vacancies prevPage="/about/vacancies/3" nextPage="/about/vacancies/5">
+<Vacancies>
   <!-- Main content -->
   <main class="w-full mt-[40px] px-4 lg:px-[75px]">
     <PreHeadline class="text-center text-[#ffffff]"
@@ -23,14 +23,6 @@ const items = ["Flutter", "React Native", "Python", "MySQL", "NodeJS"];
       >Rearrange based on expertise below</Tagline
     >
 
-    <div class="flex flex-col items-center gap-2 mt-10">
-      {
-        items.map((item) => (
-          <div class="h-[80px] bg-[#ffffff] text-[#E51A22] font-HamonBold text-[54px] leading-[74px] min-w-[270px] px-10 flex items-center justify-center">
-            <p class="relative top-1">{item}</p>
-          </div>
-        ))
-      }
-    </div>
+    <RearrangeSkills client:load />
   </main>
 </Vacancies>

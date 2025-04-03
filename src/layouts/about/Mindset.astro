@@ -36,7 +36,7 @@ const totalPages = 10; // Assuming there are 10 pages total
 
       <!-- Overlay bordered text -->
       <div
-        class="font-HamonOutline text-[clamp(9.375rem,7.571rem+9.018vw,15.688rem)] sm:leading-[290px] absolute sm:right-[200px] top-[-30px] sm:top-[-125px] opacity-40 text-[#000000]"
+        class="font-HamonOutline text-[clamp(9.375rem,7.571rem+9.018vw,15.688rem)] sm:leading-[290px] absolute sm:right-[200px] top-[-30px] sm:top-[-125px] opacity-25 text-[#000000]"
       >
         Mindset
       </div>
@@ -63,9 +63,7 @@ const totalPages = 10; // Assuming there are 10 pages total
       </div>
 
       <!-- Progress bar -->
-      <div
-        class="w-full h-[25px] bg-[#000000] absolute bottom-0 left-0 right-0"
-      >
+      <div class="w-full h-[25px] bg-[#12FF00 absolute bottom-0 left-0 right-0">
         <div
           id="progress-bar-fill"
           class="h-full bg-[#2933AF]"
@@ -206,46 +204,44 @@ const totalPages = 10; // Assuming there are 10 pages total
     window.addEventListener("resize", setFluidZoom);
   </script>
 
-  <script is:inline>
-    gsap.from("#alter__office__logo", {
-      duration: 1,
-      delay: 0.25,
-      y: -120,
-      ease: "power2.inOut",
-    });
+  <script>
+    declare const gsap: any;
 
     // Reset progress bar
-    document.getElementById("close-btn").addEventListener("click", function () {
-      sessionStorage.removeItem("mindsetProgressWidth");
-    });
+    document
+      .getElementById("close-btn")
+      ?.addEventListener("click", function () {
+        sessionStorage.removeItem("mindsetProgressWidth");
+      });
 
     // Animate progress bar
-    document.addEventListener("DOMContentLoaded", function () {
-      const progressBarFill = document.getElementById("progress-bar-fill");
-      const currentPage = parseInt(
-        progressBarFill.getAttribute("data-page") || "1"
-      );
-      const totalPages = parseInt(
-        progressBarFill.getAttribute("data-total") || "10"
-      );
-      const progressWidth = (currentPage / totalPages) * 100;
-      const prevWidth =
-        parseFloat(sessionStorage.getItem("mindsetProgressWidth")) || 0;
+    const progressBarFill = document.getElementById("progress-bar-fill");
+    const currentPage = parseInt(
+      progressBarFill?.getAttribute("data-page") || "1"
+    );
+    const totalPages = parseInt(
+      progressBarFill?.getAttribute("data-total") || "10"
+    );
+    const progressWidth = (currentPage / totalPages) * 100;
+    const prevWidth =
+      parseFloat(sessionStorage.getItem("mindsetProgressWidth") || "") || 0;
 
-      // Animate from the stored width to the new width
-      gsap.fromTo(
-        progressBarFill,
-        { width: `${prevWidth}%` },
-        {
-          width: `${progressWidth}%`,
-          duration: 1,
-          delay: 0.55,
-          ease: "power3.out",
-          onComplete: () => {
-            sessionStorage.setItem("mindsetProgressWidth", progressWidth);
-          },
-        }
-      );
-    });
+    // Animate from the stored width to the new width
+    gsap.fromTo(
+      progressBarFill,
+      { width: `${prevWidth}%` },
+      {
+        width: `${progressWidth}%`,
+        duration: 1,
+        delay: 0.55,
+        ease: "power3.out",
+        onComplete: () => {
+          sessionStorage.setItem(
+            "mindsetProgressWidth",
+            JSON.stringify(progressWidth)
+          );
+        },
+      }
+    );
   </script>
 </Layout>

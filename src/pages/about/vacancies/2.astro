@@ -1,15 +1,7 @@
 ---
 import Tagline from "@components/about/Tagline.astro";
 import Vacancies from "@layouts/about/Vacancies.astro";
-
-const items = [
-  "Coding",
-  "Testing",
-  "Art/3D",
-  "Marketing",
-  "Management",
-  "Data Analysis",
-];
+import DepartmentCarousel from "@components/about/vacancies/DepartmentCarousel.tsx";
 ---
 
 <Vacancies>
@@ -26,52 +18,6 @@ const items = [
       We mean which department is your expertise.
     </Tagline>
 
-    <div class="overflow-hidden w-full absolute bottom-0 left-0">
-      <div class="flex gap-6 w-max carousel-track">
-        {
-          items.concat(items).map((item) => (
-            <a
-              href="/about/vacancies/3"
-              class="h-[502px] w-[405px] bg-[#ffffff] text-[#E51A22] font-HamonBold text-[94px] leading-[80px] relative px-7 break-all cursor-pointer"
-            >
-              <p class="absolute bottom-[24px]">{item}</p>
-            </a>
-          ))
-        }
-      </div>
-    </div>
+    <DepartmentCarousel client:load />
   </main>
-
-  <style>
-    @keyframes scroll {
-      from {
-        transform: translateX(0);
-      }
-      to {
-        transform: translateX(-50%);
-      }
-    }
-
-    .carousel-track {
-      animation: scroll 15s linear infinite;
-    }
-
-    .carousel-track:hover {
-      animation-play-state: paused;
-    }
-  </style>
-
-  <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      const track = document.querySelector(".carousel-track") as HTMLElement;
-
-      track?.addEventListener("mouseenter", () => {
-        track.style.animationPlayState = "paused";
-      });
-
-      track?.addEventListener("mouseleave", () => {
-        track.style.animationPlayState = "running";
-      });
-    });
-  </script>
 </Vacancies>

@@ -37,17 +37,51 @@
 </dialog>
 
 <script>
-  document.addEventListener("DOMContentLoaded", function () {
-    const dialog = document.getElementById("honestyDialog");
-    const noButton = document.getElementById("noHonestyBtn");
-    const takeQuizButton = document.getElementById("takeQuizBtn");
+  declare const gsap: any;
 
-    takeQuizButton?.addEventListener("click", function () {
-      dialog?.setAttribute("open", "true");
-    });
+  const dialog = document.getElementById("honestyDialog");
+  const noButton = document.getElementById("noHonestyBtn");
+  const takeQuizButton = document.getElementById("takeQuizBtn");
 
-    noButton?.addEventListener("click", function () {
-      dialog?.removeAttribute("open");
-    });
+  // Set initial state - positioned below the viewport
+  gsap.set(dialog, {
+    display: "block",
+    y: "100%",
+    opacity: 0,
   });
+
+  // Function to open the dialog with animation
+  function openDialog() {
+    // Make sure dialog is visible but not as a modal
+    if (dialog) {
+      dialog.style.display = "block";
+      dialog.removeAttribute("open");
+
+      // Animate from bottom
+      gsap.to(dialog, {
+        y: "0%",
+        opacity: 1,
+        duration: 0.7,
+        ease: "power2.out",
+      });
+    }
+  }
+
+  // Function to close the dialog with animation
+  function closeDialog() {
+    gsap.to(dialog, {
+      y: "100%",
+      duration: 0.6,
+      ease: "power2.in",
+      onComplete: () => {
+        if (dialog) {
+          dialog.style.display = "none";
+        }
+      },
+    });
+  }
+
+  // Add event listeners
+  takeQuizButton?.addEventListener("click", openDialog);
+  noButton?.addEventListener("click", closeDialog);
 </script>

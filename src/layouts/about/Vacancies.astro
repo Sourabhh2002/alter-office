@@ -1,13 +1,6 @@
 ---
 import Layout from "@layouts/Layout.astro";
 import { Image } from "astro:assets";
-
-interface Props {
-  prevPage?: string;
-  nextPage?: string;
-}
-
-const { prevPage, nextPage } = Astro.props;
 ---
 
 <Layout title="Vacancies">
@@ -44,47 +37,6 @@ const { prevPage, nextPage } = Astro.props;
 
       <!-- Main content -->
       <slot />
-
-      <!-- Arrow btns -->
-      <div class="flex items-end absolute right-0 bottom-0">
-        <!-- Back arrow -->
-        {
-          prevPage && (
-            <a
-              href={prevPage}
-              class="h-[95px] w-[100px] sm:size-[123px] bg-[#C80005] flex items-center justify-center cursor-pointer"
-            >
-              <Image
-                src="/images/misc/back_arrow.svg"
-                alt="Back_Arrow"
-                width={54}
-                height={54}
-                loading="lazy"
-                class="size-[40px] sm:size-[54px]"
-              />
-            </a>
-          )
-        }
-
-        <!-- Forward arrow -->
-        {
-          nextPage && (
-            <a
-              href={nextPage}
-              class="w-[130px] h-[135px] sm:w-[160px] sm:h-[165px] bg-[#2933AF] flex items-center justify-center cursor-pointer"
-            >
-              <Image
-                src="/images/misc/forward_arrow.svg"
-                alt="Forward_Arrow"
-                width={68}
-                height={68}
-                loading="lazy"
-                class="size-[54px] sm:size-[68px]"
-              />
-            </a>
-          )
-        }
-      </div>
     </div>
   </section>
 

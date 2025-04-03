@@ -1,61 +1,9 @@
 ---
+import Introduce from "@components/about/vacancies/Introduce";
 import Vacancies from "@layouts/about/Vacancies.astro";
+import { Image } from "astro:assets";
 ---
 
-<Vacancies
-  prevPage="/about/vacancies/getting-started"
-  nextPage="/about/vacancies/2"
->
-  <!-- Main content -->
-  <main class="w-full mt-[95px] px-4 lg:px-[75px]">
-    <div
-      class="font-HamonBold text-[clamp(3.5rem,2.786rem+3.571vw,6rem)] leading-[clamp(3rem,2.446rem+2.768vw,4.938rem)] text-white text-center"
-    >
-      Before starting, introduce yourself
-    </div>
-
-    <div
-      class="w-full sm:w-[644px] flex flex-col mx-auto gap-[16px] mt-[50px] sm:mt-[72px] px-2 sm:px-0"
-    >
-      <!-- Name -->
-      <div class="bg-[#ffffff] h-[92px] flex justify-center items-center">
-        <p class="font-HamonBold text-[24px] text-[#000000] opacity-30">
-          Tell your name
-        </p>
-      </div>
-
-      <!-- Gender selection -->
-
-      <div class="flex justify-center my-[24px] gap-[25px]">
-        <div class="size-[168px] bg-[#ffffff] relative">
-          <p
-            class="font-HamonBold text-[24px] text-[#000000] opacity-30 absolute bottom-2 left-1/2 -translate-x-1/2"
-          >
-            Male
-          </p>
-        </div>
-        <div class="size-[168px] bg-[#ffffff] relative">
-          <p
-            class="font-HamonBold text-[24px] text-[#000000] opacity-30 absolute bottom-2 left-1/2 -translate-x-1/2"
-          >
-            Female
-          </p>
-        </div>
-      </div>
-
-      <!-- Study -->
-      <div
-        class="bg-[#ffffff] h-[92px] flex justify-center items-center mt-[10px]"
-      >
-        <p class="font-HamonBold text-[24px] text-[#000000] opacity-30">
-          Where you studied?
-        </p>
-      </div>
-
-      <div class="bg-[#ffffff] h-[92px] opacity-60 mt-[6px]"></div>
-      <div class="bg-[#ffffff] h-[92px] opacity-40"></div>
-      <div class="bg-[#ffffff] h-[92px] opacity-20"></div>
-      <div class="bg-[#ffffff] h-[92px] opacity-10"></div>
-    </div>
-  </main>
+<Vacancies>
+  <Introduce client:load />
 </Vacancies>
