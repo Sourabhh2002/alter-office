@@ -16,6 +16,7 @@
     "@types/sortablejs": "^1.15.8",
     "astro": "^5.5.3",
     "clsx": "^2.1.1",
+    "html-react-parser": "^5.2.3",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "react-sortablejs": "^6.1.4",

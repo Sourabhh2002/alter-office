@@ -1,25 +1,119 @@
 ---
+import Headline from "@components/about/Headline.astro";
+import PreHeadline from "@components/about/PreHeadline.astro";
+import Tagline from "@components/about/Tagline.astro";
 import Culture from "@layouts/about/Culture.astro";
 ---
 
 <Culture prevPage="/about/culture/3" nextPage="/about/culture/5">
   <!-- Main content -->
-  <main class="w-full mt-[55px] px-4 lg:px-[75px]">
-    <p class="font-HamonLight text-[68px]">We believe</p>
-    <div class="flex gap-24 mt-4">
-      <div class="font-HamonBold text-[150px] leading-[130px]">
+  <main class="w-full mt-[100px] sm:mt-[55px] px-4 lg:px-[75px]">
+    <PreHeadline id="pre__headline" class="flex items-end"
+      >We believe</PreHeadline
+    >
+    <div class="md:flex gap-24 mt-8">
+      <Headline id="headline">
         <p>Productivity</p>
         <p>comes when</p>
         <p>you are</p>
         <p>taken care.</p>
-      </div>
-      <div
-        class="w-[732px] text-[26px] leading-[30px] opacity-90 font-HamonBold relative top-4"
-      >
+      </Headline>
+      <Tagline id="tagline" class="relative top-4">
         Great work starts with feeling great. From medical insurance for your
         entire family to daily lunch and unlimited refreshments, we ensure
         you're healthy, happy, and ready to create your best work.
-      </div>
+      </Tagline>
     </div>
   </main>
 </Culture>
+
+<script>
+  declare const gsap: any;
+
+  // Intro animations
+  const introAnimations = () => {
+    gsap.from("#pre__headline", {
+      duration: 1.45,
+      x: 250,
+      opacity: 0,
+      ease: "power2.inOut",
+    });
+
+    gsap.from("#headline", {
+      duration: 1.25,
+      x: -2000,
+      ease: "power2.inOut",
+    });
+
+    gsap.from("#tagline", {
+      duration: 1.35,
+      x: 1000,
+      opacity: 0,
+      ease: "power2.inOut",
+    });
+  };
+
+  // Outro animations
+  const outroAnimations = (nextPageUrl: string) => {
+    const timeline = gsap.timeline({
+      onComplete: () => {
+        window.location.href = nextPageUrl;
+      },
+    });
+
+    timeline.to("#pre__headline", {
+      duration: 0.75,
+      x: 250,
+      opacity: 0,
+      ease: "power2.inOut",
+    });
+
+    timeline.to(
+      "#headline",
+      {
+        duration: 0.75,
+        x: -2000,
+        ease: "power2.inOut",
+      },
+      "-=0.5"
+    );
+
+    timeline.to(
+      "#tagline",
+      {
+        duration: 0.75,
+        x: 1000,
+        opacity: 0,
+        ease: "power2.inOut",
+      },
+      "-=0.5"
+    );
+  };
+
+  // Run intro animations on page load
+  introAnimations();
+
+  // Set up navigation with outro animations
+  const prevButton = document.querySelector('a[href="/about/culture/3"]');
+  const nextButton = document.querySelector('a[href="/about/culture/5"]');
+
+  if (prevButton) {
+    prevButton.addEventListener("click", (e) => {
+      e.preventDefault();
+      const prevPage = prevButton.getAttribute("href");
+      if (prevPage) {
+        outroAnimations(prevPage);
+      }
+    });
+  }
+
+  if (nextButton) {
+    nextButton.addEventListener("click", (e) => {
+      e.preventDefault();
+      const nextPage = nextButton.getAttribute("href");
+      if (nextPage) {
+        outroAnimations(nextPage);
+      }
+    });
+  }
+</script>

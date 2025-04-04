@@ -8,6 +8,12 @@ interface Props {
 }
 
 const { prevPage, nextPage } = Astro.props;
+
+// Extract the current page number from the URL
+const currentPath = Astro.url.pathname;
+const pageNumberMatch = currentPath.match(/\/(\d+)$/);
+const currentPageNumber = pageNumberMatch ? parseInt(pageNumberMatch[1]) : 1;
+const totalPages = 6;
 ---
 
 <Layout title="Culture">
@@ -28,8 +34,16 @@ const { prevPage, nextPage } = Astro.props;
         />
       </div>
 
+      <!-- Overlay bordered text -->
+      <div
+        class="font-HamonOutline text-[clamp(9.375rem,7.571rem+9.018vw,15.688rem)] sm:leading-[290px] absolute sm:right-[200px] top-[-30px] sm:top-[-125px] opacity-25 text-[#000000]"
+      >
+        Culture
+      </div>
+
       <!-- Close btn -->
       <a
+        id="close-btn"
         href="/about"
         class="size-[70px] sm:size-[98px] absolute top-0 right-0 bg-[#000000] flex items-center justify-center cursor-pointer"
       >
@@ -44,7 +58,22 @@ const { prevPage, nextPage } = Astro.props;
       </a>
 
       <!-- Main content -->
-      <slot />
+      <div class="main-content">
+        <slot />
+      </div>
+
+      <!-- Progress bar -->
+      <div
+        class="w-full h-[20px] bg-[rgba(0,0,0,0.1)] absolute bottom-0 left-0 right-0"
+      >
+        <div
+          id="progress-bar-fill"
+          class="h-full bg-[#2933AF]"
+          data-page={currentPageNumber}
+          data-total={totalPages}
+        >
+        </div>
+      </div>
 
       <!-- Arrow btns -->
       <div class="flex items-end absolute right-0 bottom-0">
@@ -95,6 +124,16 @@ const { prevPage, nextPage } = Astro.props;
       visibility: hidden;
     }
 
+    @media (max-width: 1024px) and (min-width: 640px) {
+      .main-content {
+        position: absolute;
+        top: 50%;
+        left: 0;
+        right: 0;
+        transform: translateY(-70%);
+      }
+    }
+
     @media (max-height: 350px) {
       section {
         height: auto !important;
@@ -106,6 +145,7 @@ const { prevPage, nextPage } = Astro.props;
 
   <!-- Script -->
 
+  <!-- Global -->
   <script>
     function calculateBaseZoom() {
       const minZoom = 0.35;
@@ -164,5 +204,46 @@ const { prevPage, nextPage } = Astro.props;
 
     window.addEventListener("load", setFluidZoom);
     window.addEventListener("resize", setFluidZoom);
+  </script>
+
+  <script>
+    declare const gsap: any;
+
+    // Reset progress bar
+    document
+      .getElementById("close-btn")
+      ?.addEventListener("click", function () {
+        sessionStorage.removeItem("cultureProgressWidth");
+      });
+
+    // Animate progress bar
+    const progressBarFill = document.getElementById("progress-bar-fill");
+    const currentPage = parseInt(
+      progressBarFill?.getAttribute("data-page") || "1"
+    );
+    const totalPages = parseInt(
+      progressBarFill?.getAttribute("data-total") || "10"
+    );
+    const progressWidth = (currentPage / totalPages) * 100;
+    const prevWidth =
+      parseFloat(sessionStorage.getItem("cultureProgressWidth") || "") || 0;
+
+    // Animate from the stored width to the new width
+    gsap.fromTo(
+      progressBarFill,
+      { width: `${prevWidth}%` },
+      {
+        width: `${progressWidth}%`,
+        duration: 1,
+        delay: 0.55,
+        ease: "power3.out",
+        onComplete: () => {
+          sessionStorage.setItem(
+            "cultureProgressWidth",
+            JSON.stringify(progressWidth)
+          );
+        },
+      }
+    );
   </script>
 </Layout>

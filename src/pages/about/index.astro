@@ -1,6 +1,5 @@
 ---
 import Headline from "@components/about/Headline.astro";
-import PageTransition from "@components/about/PageTransition.astro";
 import Layout from "@layouts/Layout.astro";
 import { Image } from "astro:assets";
 ---
@@ -40,8 +39,8 @@ import { Image } from "astro:assets";
           defaultStyles={false}
           class="text-white tracking-[-4.2px] leading-[clamp(3.625rem,1.125rem+7.5vw,7.875rem)]"
         >
-          <p>We are</p>
-          <p>The Alter Office.</p>
+          <p id="headline__1">We are</p>
+          <p id="headline__2">The Alter Office.</p>
         </Headline>
 
         <!-- Sections container -->
@@ -51,6 +50,7 @@ import { Image } from "astro:assets";
           >
             <!-- Sections -->
             <a
+              id="culture"
               href="/about/culture/1"
               class="bg-[#FFE135] h-full relative cursor-pointer"
             >
@@ -76,6 +76,7 @@ import { Image } from "astro:assets";
             </a>
 
             <a
+              id="mindset"
               href="/about/mindset/1"
               class="bg-[#12FF00] h-full relative cursor-pointer"
             >
@@ -88,6 +89,7 @@ import { Image } from "astro:assets";
             </a>
 
             <a
+              id="vacancies"
               href="/about/vacancies/getting-started"
               class="bg-[#E51A22] h-full relative cursor-pointer"
             >
@@ -99,7 +101,11 @@ import { Image } from "astro:assets";
               </div>
             </a>
           </div>
-          <div class="bg-[#12FF00] h-[38px] w-[32%] mt-5 hidden md:block"></div>
+          <div
+            id="indicator"
+            class="bg-[#12FF00] h-[38px] w-[32%] mt-5 hidden md:block"
+          >
+          </div>
         </div>
       </main>
     </div>
@@ -122,6 +128,59 @@ import { Image } from "astro:assets";
   <!-- Script -->
 
   <script>
+    declare const gsap: any;
+
+    gsap.from("#headline__1", {
+      duration: 1.5,
+      x: 750,
+      opacity: 0,
+      ease: "power2.inOut",
+    });
+
+    gsap.from("#headline__2", {
+      duration: 1.5,
+      x: -1200,
+      opacity: 0,
+      delay: 0.95,
+      ease: "expo.out",
+    });
+
+    gsap.from("#mindset", {
+      duration: 2,
+      opacity: 0,
+      y: 500,
+      x: -50,
+      scale: 2.5,
+      ease: "expo.out",
+    });
+
+    gsap.from("#culture", {
+      duration: 2,
+      delay: 0.2,
+      scale: 2.5,
+      opacity: 0,
+      y: 1200,
+      x: -800,
+      ease: "power4.out",
+    });
+
+    gsap.from("#vacancies", {
+      duration: 2,
+      delay: 0.2,
+      scale: 2.5,
+      opacity: 0,
+      y: 900,
+      x: 700,
+      ease: "power4.out",
+    });
+
+    gsap.from("#indicator", {
+      duration: 1,
+      delay: 1.25,
+      opacity: 0,
+      ease: "power4.out",
+    });
+
     // Calculate zoom start
     function calculateBaseZoom() {
       const minZoom = 0.35;
