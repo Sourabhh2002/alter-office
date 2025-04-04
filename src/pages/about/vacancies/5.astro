@@ -1,0 +1,12 @@
+---
+import PreHeadline from "@components/about/PreHeadline.astro";
+import Questions from "@components/about/vacancies/questions/Questions";
+import Vacancies from "@layouts/about/Vacancies.astro";
+---
+
+<Vacancies>
+  <!-- Main content -->
+  <main class="w-full mt-[120px] px-6 sm:px-[27px] md:px-[43px] lg:px-[80px]">
+    <Questions client:load />
+  </main>
+</Vacancies>

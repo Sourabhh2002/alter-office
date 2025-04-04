@@ -88,7 +88,7 @@ export default function DepartmentCarousel() {
                   : "bg-[#ffffff] text-[#E51A22]"
               }`}
             >
-              <p className="absolute bottom-[24px]">{item}</p>
+              <p className="absolute bottom-[24px] text-left">{item}</p>
             </button>
           ))}
         </div>

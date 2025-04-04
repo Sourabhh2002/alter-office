@@ -69,7 +69,7 @@ export default function SkillCarousel() {
         </a>
 
         {/* Forward arrow */}
-        {selectedSkills.length === 5 ? (
+        {selectedSkills.length >= 1 ? (
           <button
             onClick={() => handleForwardClick()}
             className="w-[130px] h-[135px] sm:w-[160px] sm:h-[165px] bg-[#2933AF] flex items-center justify-center cursor-pointer"

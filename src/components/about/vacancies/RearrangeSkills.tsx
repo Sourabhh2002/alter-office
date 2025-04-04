@@ -1,12 +1,70 @@
 import { useEffect, useState } from "react";
 import { getUserDetails, updateUserDetails } from "src/lib/utils/userStorage";
 import pkg from "react-sortablejs";
+import FireExplode from "./FireExplode";
 
 export default function RearrangeSkills() {
   const { ReactSortable } = pkg;
   const [selectedSkills, setSelectedSkills] = useState<string[]>([]);
 
-  const handleForwardBtnClick = () => {};
+  const handleForwardBtnClick = () => {
+    const sessionKey = sessionStorage.getItem("sessionId");
+    if (sessionKey) {
+      postApplicationSkills(sessionKey);
+    }
+  };
+
+  const postApplicationSkills = async (sessionKey: string) => {
+    try {
+      const response = await fetch(
+        "https://api.thealteroffice.com/candidate/application/skills",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "x-access-key": sessionKey,
+          },
+          body: JSON.stringify({
+            selectedSkills: selectedSkills,
+          }),
+        }
+      );
+
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+
+      const data = await response.json();
+
+      // Set matching job roles in session storage
+      sessionStorage.setItem(
+        "matchingJobRoles",
+        JSON.stringify(data.matchingJobRoles)
+      );
+
+      // Set questions in session storage
+      sessionStorage.setItem("questions", JSON.stringify(data.questions));
+
+      // Show FireExplode animation for 4 seconds
+      const animationElement = document.getElementById("fireExplode");
+      if (animationElement) {
+        animationElement.style.display = "block";
+
+        // Redirect after 4 seconds
+        setTimeout(() => {
+          window.location.href = "/about/vacancies/5";
+        }, 3600);
+      } else {
+        // If animation element not found, redirect immediately
+        window.location.href = "/about/vacancies/5";
+      }
+    } catch (error) {
+      console.error("Error:", error);
+      alert(
+        "There was an error submitting your information. Please try again."
+      );
+    }
+  };
 
   // get selectedSkills data from sessionStorage
   useEffect(() => {
@@ -85,6 +143,10 @@ export default function RearrangeSkills() {
             className="size-[54px] sm:size-[68px]"
           />
         </button>
+      </div>
+
+      <div id="fireExplode" style={{ display: "none" }}>
+        <FireExplode />
       </div>
     </>
   );

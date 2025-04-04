@@ -1,22 +1,18 @@
 ---
-import PreHeadline from "@components/about/PreHeadline.astro";
-import Tagline from "@components/about/Tagline.astro";
+import SuggestedRoles from "@components/about/vacancies/SuggestedRoles";
 import Vacancies from "@layouts/about/Vacancies.astro";
 ---
 
-<Vacancies>
+<Vacancies prevPage="/about/vacancies/2" nextPage="/about/vacancies/4">
   <!-- Main content -->
-  <main class="w-full mt-[100px] px-6 sm:px-[27px] md:px-[43px] lg:px-[80px]">
-    <PreHeadline class="text-[#ffffff] text-center"
-      >One more thing Thammaiah</PreHeadline
-    >
+  <main class="w-full mt-[60px] px-4 lg:px-[75px]">
     <div
-      class="font-HamonBold text-[clamp(3.5rem,2.786rem+3.571vw,6rem)] leading-[clamp(3rem,2.446rem+2.768vw,5.5rem)] text-white text-center"
+      class="font-HamonBold text-[clamp(3.5rem,2.786rem+3.571vw,6rem)] leading-[clamp(4rem,2.446rem+2.768vw,5.5rem)] text-white text-center"
     >
-      <p>We know you prepared your resume</p>
-      <p>with a lot of thought, just for your</p>
-      <p>satisfaction and more information</p>
-      <p>about you, we'll go through it.</p>
+      <p>Here are the roles that fits you in</p>
+      <p>The Alter Office.</p>
     </div>
+
+    <SuggestedRoles client:load />
   </main>
 </Vacancies>

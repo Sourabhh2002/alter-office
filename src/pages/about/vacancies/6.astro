@@ -1,22 +1,24 @@
 ---
 import PreHeadline from "@components/about/PreHeadline.astro";
-import Tagline from "@components/about/Tagline.astro";
+import UploadResume from "@components/about/vacancies/UploadResume";
 import Vacancies from "@layouts/about/Vacancies.astro";
 ---
 
 <Vacancies>
   <!-- Main content -->
-  <main class="w-full mt-[120px] px-6 sm:px-[27px] md:px-[43px] lg:px-[80px]">
-    <PreHeadline class="text-[#ffffff]">By the way, thammaiah</PreHeadline>
-    <div
-      class="font-HamonBold text-[clamp(3.5rem,2.786rem+3.571vw,6rem)] leading-[clamp(3rem,2.446rem+2.768vw,4.938rem)] text-white mt-2"
+  <main class="w-full mt-[100px] px-6 sm:px-[27px] md:px-[43px] lg:px-[80px]">
+    <PreHeadline class="text-[#ffffff] text-center"
+      >One more thing Thammaiah</PreHeadline
     >
-      <p>How many years of real working</p>
-      <p>experience you got!</p>
+    <div
+      class="font-HamonBold text-[clamp(3.5rem,2.786rem+3.571vw,6rem)] leading-[clamp(3rem,2.446rem+2.768vw,5.5rem)] text-white text-center"
+    >
+      <p>We know you prepared your resume</p>
+      <p>with a lot of thought, just for your</p>
+      <p>satisfaction and more information</p>
+      <p>about you, we'll go through it.</p>
     </div>
 
-    <Tagline class="mt-12">
-      Slide to the years that you have gained the knowledge
-    </Tagline>
+    <UploadResume client:load />
   </main>
 </Vacancies>
